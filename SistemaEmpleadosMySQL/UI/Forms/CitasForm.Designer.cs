@@ -16,6 +16,13 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.GroupBox grpEdicion;
+        private System.Windows.Forms.Label lblPaciente;
+        private System.Windows.Forms.Label lblMedico;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label lblMotivo;
 
         // Controles para Filtros Avanzados
         private System.Windows.Forms.Panel pnlFiltros;
@@ -55,6 +62,13 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnEliminar = new Button();
             btnLimpiar = new Button();
             lblTotal = new Label();
+            grpEdicion = new GroupBox();
+            lblPaciente = new Label();
+            lblMedico = new Label();
+            lblEstado = new Label();
+            lblFecha = new Label();
+            lblHora = new Label();
+            lblMotivo = new Label();
             pnlFiltros = new Panel();
             lblFiltroEstado = new Label();
             cmbFiltroEstado = new ComboBox();
@@ -78,84 +92,149 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             dgvCitas.Name = "dgvCitas";
             dgvCitas.Size = new Size(760, 250);
             dgvCitas.TabIndex = 1;
+            dgvCitas.SelectionChanged += dgvCitas_SelectionChanged;
+            // 
+            // lblPaciente
+            // 
+            lblPaciente.AutoSize = true;
+            lblPaciente.Location = new Point(6, 20);
+            lblPaciente.Name = "lblPaciente";
+            lblPaciente.Size = new Size(55, 15);
+            lblPaciente.TabIndex = 20;
+            lblPaciente.Text = "Paciente:";
             // 
             // cmbPaciente
             // 
-            cmbPaciente.Location = new Point(12, 370);
+            cmbPaciente.Location = new Point(6, 38);
             cmbPaciente.Name = "cmbPaciente";
             cmbPaciente.Size = new Size(150, 23);
             cmbPaciente.TabIndex = 2;
             // 
+            // lblMedico
+            // 
+            lblMedico.AutoSize = true;
+            lblMedico.Location = new Point(164, 20);
+            lblMedico.Name = "lblMedico";
+            lblMedico.Size = new Size(50, 15);
+            lblMedico.TabIndex = 21;
+            lblMedico.Text = "Médico:";
+            // 
             // cmbMedico
             // 
-            cmbMedico.Location = new Point(170, 370);
+            cmbMedico.Location = new Point(164, 38);
             cmbMedico.Name = "cmbMedico";
             cmbMedico.Size = new Size(150, 23);
             cmbMedico.TabIndex = 3;
             // 
+            // lblEstado
+            // 
+            lblEstado.AutoSize = true;
+            lblEstado.Location = new Point(322, 20);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(45, 15);
+            lblEstado.TabIndex = 22;
+            lblEstado.Text = "Estado:";
+            // 
             // cmbEstado
             // 
-            cmbEstado.Location = new Point(328, 370);
+            cmbEstado.Location = new Point(322, 38);
             cmbEstado.Name = "cmbEstado";
             cmbEstado.Size = new Size(150, 23);
             cmbEstado.TabIndex = 4;
             // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(480, 20);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(41, 15);
+            lblFecha.TabIndex = 23;
+            lblFecha.Text = "Fecha:";
+            // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(486, 370);
+            dtpFecha.Location = new Point(480, 38);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(150, 23);
             dtpFecha.TabIndex = 5;
             // 
+            // lblHora
+            // 
+            lblHora.AutoSize = true;
+            lblHora.Location = new Point(638, 20);
+            lblHora.Name = "lblHora";
+            lblHora.Size = new Size(79, 15);
+            lblHora.TabIndex = 24;
+            lblHora.Text = "Hora (HH:MM):";
+            // 
             // txtHora
             // 
-            txtHora.Location = new Point(644, 370);
+            txtHora.Location = new Point(638, 38);
             txtHora.Name = "txtHora";
+            txtHora.PlaceholderText = "09:30";
             txtHora.Size = new Size(128, 23);
             txtHora.TabIndex = 6;
             // 
+            // lblMotivo
+            // 
+            lblMotivo.AutoSize = true;
+            lblMotivo.Location = new Point(6, 64);
+            lblMotivo.Name = "lblMotivo";
+            lblMotivo.Size = new Size(48, 15);
+            lblMotivo.TabIndex = 25;
+            lblMotivo.Text = "Motivo:";
+            // 
             // txtMotivo
             // 
-            txtMotivo.Location = new Point(12, 401);
+            txtMotivo.Location = new Point(6, 82);
             txtMotivo.Name = "txtMotivo";
+            txtMotivo.PlaceholderText = "Ej: Consulta general, dolor de cabeza...";
             txtMotivo.Size = new Size(760, 23);
             txtMotivo.TabIndex = 7;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(12, 430);
+            btnAgregar.Location = new Point(6, 110);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(100, 30);
             btnAgregar.TabIndex = 8;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.Click += btnAgregar_Click;
+            btnAgregar.BackColor = Color.FromArgb(34, 139, 34);
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Text = "➕ Agregar";
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(120, 430);
+            btnActualizar.Location = new Point(114, 110);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(100, 30);
             btnActualizar.TabIndex = 9;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.Click += btnActualizar_Click;
+            btnActualizar.BackColor = Color.FromArgb(30, 144, 255);
+            btnActualizar.FlatStyle = FlatStyle.Flat;
+            btnActualizar.ForeColor = Color.White;
+            btnActualizar.Text = "✏️ Actualizar";
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(228, 430);
+            btnEliminar.Location = new Point(222, 110);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(100, 30);
             btnEliminar.TabIndex = 10;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.Click += btnEliminar_Click;
+            btnEliminar.BackColor = Color.FromArgb(220, 20, 60);
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.ForeColor = Color.White;
+            btnEliminar.Text = "🗑️ Eliminar";
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(336, 430);
+            btnLimpiar.Location = new Point(330, 110);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(100, 30);
             btnLimpiar.TabIndex = 11;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.Click += btnLimpiar_Click;
+            btnLimpiar.BackColor = Color.FromArgb(169, 169, 169);
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.ForeColor = Color.Black;
+            btnLimpiar.Text = "🧹 Limpiar";
             // 
             // lblTotal
             // 
@@ -164,6 +243,31 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblTotal.Size = new Size(100, 23);
             lblTotal.TabIndex = 12;
             lblTotal.Text = "Total: 0";
+            // 
+            // grpEdicion
+            // 
+            grpEdicion.Controls.Add(lblPaciente);
+            grpEdicion.Controls.Add(cmbPaciente);
+            grpEdicion.Controls.Add(lblMedico);
+            grpEdicion.Controls.Add(cmbMedico);
+            grpEdicion.Controls.Add(lblEstado);
+            grpEdicion.Controls.Add(cmbEstado);
+            grpEdicion.Controls.Add(lblFecha);
+            grpEdicion.Controls.Add(dtpFecha);
+            grpEdicion.Controls.Add(lblHora);
+            grpEdicion.Controls.Add(txtHora);
+            grpEdicion.Controls.Add(lblMotivo);
+            grpEdicion.Controls.Add(txtMotivo);
+            grpEdicion.Controls.Add(btnAgregar);
+            grpEdicion.Controls.Add(btnActualizar);
+            grpEdicion.Controls.Add(btnEliminar);
+            grpEdicion.Controls.Add(btnLimpiar);
+            grpEdicion.Location = new Point(12, 360);
+            grpEdicion.Name = "grpEdicion";
+            grpEdicion.Size = new Size(760, 140);
+            grpEdicion.TabIndex = 13;
+            grpEdicion.TabStop = false;
+            grpEdicion.Text = "Editar Cita";
             // 
             // pnlFiltros
             // 
@@ -240,9 +344,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnAplicarFiltros.Name = "btnAplicarFiltros";
             btnAplicarFiltros.Size = new Size(95, 23);
             btnAplicarFiltros.TabIndex = 6;
-            btnAplicarFiltros.Text = "🔍 Filtrar";
-            btnAplicarFiltros.UseVisualStyleBackColor = false;
-            btnAplicarFiltros.Click += BtnAplicarFiltros_Click;
+            btnAplicarFiltros.BackColor = Color.FromArgb(30, 144, 255);
+            btnAplicarFiltros.FlatStyle = FlatStyle.Flat;
+            btnAplicarFiltros.ForeColor = Color.White;
             // 
             // btnLimpiarFiltros
             // 
@@ -250,8 +354,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnLimpiarFiltros.Name = "btnLimpiarFiltros";
             btnLimpiarFiltros.Size = new Size(95, 23);
             btnLimpiarFiltros.TabIndex = 7;
-            btnLimpiarFiltros.Text = "⟲ Limpiar";
-            btnLimpiarFiltros.Click += BtnLimpiarFiltros_Click;
+            btnLimpiarFiltros.BackColor = Color.FromArgb(169, 169, 169);
+            btnLimpiarFiltros.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltros.ForeColor = Color.Black;
             // 
             // lblFiltroPaciente
             // 
@@ -285,19 +390,10 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // CitasForm
             // 
-            ClientSize = new Size(783, 477);
+            ClientSize = new Size(783, 505);
             Controls.Add(pnlFiltros);
             Controls.Add(dgvCitas);
-            Controls.Add(cmbPaciente);
-            Controls.Add(cmbMedico);
-            Controls.Add(cmbEstado);
-            Controls.Add(dtpFecha);
-            Controls.Add(txtHora);
-            Controls.Add(txtMotivo);
-            Controls.Add(btnAgregar);
-            Controls.Add(btnActualizar);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnLimpiar);
+            Controls.Add(grpEdicion);
             Controls.Add(lblTotal);
             Name = "CitasForm";
             Text = "Gestión de Citas";

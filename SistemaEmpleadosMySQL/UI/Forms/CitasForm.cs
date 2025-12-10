@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using SistemaEmpleadosMySQL.DTO;
 using SistemaEmpleadosMySQL.Helpers;
@@ -53,6 +54,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
                 dgvCitas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvCitas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvCitas.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                dgvCitas.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
+                dgvCitas.DefaultCellStyle.SelectionForeColor = Color.White;
             }
         }
 
