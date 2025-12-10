@@ -83,6 +83,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             this.Name = "UsuariosForm";
             this.Text = "Administración de Usuarios";
             this.Size = new System.Drawing.Size(800, 400);
+            this.Load += this.UsuariosForm_Load;
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);

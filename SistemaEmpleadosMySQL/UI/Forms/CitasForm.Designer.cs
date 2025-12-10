@@ -5,6 +5,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         private System.ComponentModel.IContainer components = null;
 
         private System.Windows.Forms.DataGridView dgvCitas;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.ComboBox cmbPaciente;
         private System.Windows.Forms.ComboBox cmbMedico;
         private System.Windows.Forms.ComboBox cmbEstado;
@@ -50,6 +51,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void InitializeComponent()
         {
+            lblTitulo = new Label();
             dgvCitas = new DataGridView();
             cmbPaciente = new ComboBox();
             cmbMedico = new ComboBox();
@@ -86,6 +88,17 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             pnlFiltros.SuspendLayout();
             SuspendLayout();
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Arial", 14F, FontStyle.Bold);
+            lblTitulo.Location = new Point(12, 12);
+            lblTitulo.Margin = new Padding(4, 0, 4, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(150, 22);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Gestión de Citas";
+            // 
             // dgvCitas
             // 
             dgvCitas.Location = new Point(12, 100);
@@ -101,10 +114,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblPaciente.Name = "lblPaciente";
             lblPaciente.Size = new Size(55, 15);
             lblPaciente.TabIndex = 20;
-            lblPaciente.Text = "Paciente:";
+            lblPaciente.Text = "Seleccionar Paciente:";
             // 
             // cmbPaciente
             // 
+            cmbPaciente.BackColor = Color.WhiteSmoke;
             cmbPaciente.Location = new Point(6, 38);
             cmbPaciente.Name = "cmbPaciente";
             cmbPaciente.Size = new Size(150, 23);
@@ -117,10 +131,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblMedico.Name = "lblMedico";
             lblMedico.Size = new Size(50, 15);
             lblMedico.TabIndex = 21;
-            lblMedico.Text = "Médico:";
+            lblMedico.Text = "Seleccionar Médico:";
             // 
             // cmbMedico
             // 
+            cmbMedico.BackColor = Color.WhiteSmoke;
             cmbMedico.Location = new Point(164, 38);
             cmbMedico.Name = "cmbMedico";
             cmbMedico.Size = new Size(150, 23);
@@ -133,10 +148,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(45, 15);
             lblEstado.TabIndex = 22;
-            lblEstado.Text = "Estado:";
+            lblEstado.Text = "Estado de la Cita:";
             // 
             // cmbEstado
             // 
+            cmbEstado.BackColor = Color.WhiteSmoke;
             cmbEstado.Location = new Point(322, 38);
             cmbEstado.Name = "cmbEstado";
             cmbEstado.Size = new Size(150, 23);
@@ -149,10 +165,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(41, 15);
             lblFecha.TabIndex = 23;
-            lblFecha.Text = "Fecha:";
+            lblFecha.Text = "Fecha de la Cita:";
             // 
             // dtpFecha
             // 
+            dtpFecha.BackColor = Color.WhiteSmoke;
             dtpFecha.Location = new Point(480, 38);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(150, 23);
@@ -165,10 +182,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblHora.Name = "lblHora";
             lblHora.Size = new Size(79, 15);
             lblHora.TabIndex = 24;
-            lblHora.Text = "Hora (HH:MM):";
+            lblHora.Text = "Hora de la Cita (HH:MM):";
             // 
             // txtHora
             // 
+            txtHora.BackColor = Color.WhiteSmoke;
             txtHora.Location = new Point(638, 38);
             txtHora.Name = "txtHora";
             txtHora.PlaceholderText = "09:30";
@@ -182,10 +200,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             lblMotivo.Name = "lblMotivo";
             lblMotivo.Size = new Size(48, 15);
             lblMotivo.TabIndex = 25;
-            lblMotivo.Text = "Motivo:";
+            lblMotivo.Text = "Motivo de la Consulta:";
             // 
             // txtMotivo
             // 
+            txtMotivo.BackColor = Color.WhiteSmoke;
             txtMotivo.Location = new Point(6, 82);
             txtMotivo.Name = "txtMotivo";
             txtMotivo.PlaceholderText = "Ej: Consulta general, dolor de cabeza...";
@@ -202,6 +221,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Text = "➕ Agregar";
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnActualizar
             // 
@@ -213,6 +233,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnActualizar.FlatStyle = FlatStyle.Flat;
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Text = "✏️ Actualizar";
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // btnEliminar
             // 
@@ -224,6 +245,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Text = "🗑️ Eliminar";
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnLimpiar
             // 
@@ -235,6 +257,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.ForeColor = Color.Black;
             btnLimpiar.Text = "🧹 Limpiar";
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // lblTotal
             // 
@@ -347,6 +370,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnAplicarFiltros.BackColor = Color.FromArgb(30, 144, 255);
             btnAplicarFiltros.FlatStyle = FlatStyle.Flat;
             btnAplicarFiltros.ForeColor = Color.White;
+            btnAplicarFiltros.Text = "🔍 Aplicar";
+            btnAplicarFiltros.Click += BtnAplicarFiltros_Click;
             // 
             // btnLimpiarFiltros
             // 
@@ -357,6 +382,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             btnLimpiarFiltros.BackColor = Color.FromArgb(169, 169, 169);
             btnLimpiarFiltros.FlatStyle = FlatStyle.Flat;
             btnLimpiarFiltros.ForeColor = Color.Black;
+            btnLimpiarFiltros.Text = "⟲ Limpiar";
+            btnLimpiarFiltros.Click += BtnLimpiarFiltros_Click;
             // 
             // lblFiltroPaciente
             // 
@@ -391,6 +418,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // CitasForm
             // 
             ClientSize = new Size(783, 505);
+            Controls.Add(lblTitulo);
             Controls.Add(pnlFiltros);
             Controls.Add(dgvCitas);
             Controls.Add(grpEdicion);
