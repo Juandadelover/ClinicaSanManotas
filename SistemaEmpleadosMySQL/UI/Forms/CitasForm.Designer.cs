@@ -301,6 +301,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             Controls.Add(lblTotal);
             Name = "CitasForm";
             Text = "Gestión de Citas";
+            Load += CitasForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCitas).EndInit();
             pnlFiltros.ResumeLayout(false);
             ResumeLayout(false);
