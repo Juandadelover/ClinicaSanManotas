@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- Cadena de conexión a MySQL -->
+  <connectionStrings>
+    <add name="DefaultConnection" 
+         connectionString="server=localhost; database=clinica_san_manotas; Uid=root; pwd=12345;" 
+         providerName="MySql.Data.MySqlClient" />
+  </connectionStrings>
+
+  <!-- Configuración de aplicación -->
+  <appSettings>
+    <!-- General Settings -->
+    <add key="ApplicationName" value="CLINICA SAN MANOTAS" />
+    <add key="ApplicationVersion" value="1.0.0" />
+    <add key="Environment" value="Development" />
+
+    <!-- Database Settings -->
+    <add key="Database:EnableConnectionPooling" value="true" />
+    <add key="Database:MaxPoolSize" value="100" />
+    <add key="Database:MinPoolSize" value="5" />
+
+    <!-- Security Settings -->
+    <add key="Security:PasswordMinLength" value="8" />
+    <add key="Security:SessionTimeout" value="30" />
+    <add key="Security:MaxLoginAttempts" value="5" />
+    <add key="Security:LockoutDuration" value="15" />
+
+    <!-- UI Settings -->
+    <add key="UI:Theme" value="Light" />
+    <add key="UI:Language" value="es" />
+    <add key="UI:DateFormat" value="yyyy-MM-dd" />
+    <add key="UI:TimeFormat" value="HH:mm" />
+
+    <!-- Pagination Settings -->
+    <add key="Pagination:DefaultPageSize" value="10" />
+    <add key="Pagination:MaxPageSize" value="100" />
+
+    <!-- Logging Settings -->
+    <add key="Logging:EnableFileLogging" value="true" />
+    <add key="Logging:LogFilePath" value="logs/" />
+    <add key="Logging:LogLevel" value="Debug" />
+
+    <!-- Feature Flags -->
+    <add key="Features:EnableAudit" value="true" />
+    <add key="Features:EnableNotifications" value="false" />
+    <add key="Features:EnableEmailAlerts" value="false" />
+  </appSettings>
+
+  <!-- Startup -->
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8" />
+  </startup>
+
+  <!-- Runtime -->
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="MySql.Data" publicKeyToken="c5687fc88969c44d" />
+        <bindingRedirect oldVersion="0.0.0.0-8.0.33.0" newVersion="8.0.33.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
