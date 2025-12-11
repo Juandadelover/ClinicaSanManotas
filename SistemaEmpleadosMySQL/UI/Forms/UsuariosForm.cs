@@ -88,11 +88,13 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                             usuario.FechaUltimoLogin?.ToString("dd/MM/yyyy HH:mm:ss") ?? "Nunca"
                         );
                     }
+                    
+                    lblTotal.Text = $"Total: {dgvUsuarios.Rows.Count}";
                 }
 
                 if (dgvUsuarios.Rows.Count == 0)
                 {
-                    MessageBox.Show("No hay usuarios registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblTotal.Text = "Total: 0";
                 }
             }
             catch (Exception ex)
@@ -282,7 +284,34 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             txtUsername.Clear();
             txtEmail.Clear();
             cmbRol.SelectedIndex = -1;
+            cmbEstado.SelectedIndex = 0;
             _usuarioActual = null;
+            dgvUsuarios.ClearSelection();
+        }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            btnAgregar_Click(sender, e);
+        }
+
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            btnActualizar_Click(sender, e);
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            btnEliminar_Click(sender, e);
+        }
+
+        private void BtnRestablecerContraseña_Click(object sender, EventArgs e)
+        {
+            btnRestablecerContraseña_Click(sender, e);
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
         }
     }
 }
