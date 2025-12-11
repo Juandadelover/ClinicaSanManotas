@@ -13,6 +13,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.ComboBox cmbRol;
+        private System.Windows.Forms.Label lblContraseña;
+        private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.GroupBox grpBotones;
@@ -43,6 +45,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             txtEmail = new TextBox();
             lblRol = new Label();
             cmbRol = new ComboBox();
+            lblContraseña = new Label();
+            txtContraseña = new TextBox();
             lblEstado = new Label();
             cmbEstado = new ComboBox();
             grpBotones = new GroupBox();
@@ -82,6 +86,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             grpDatos.Controls.Add(txtEmail);
             grpDatos.Controls.Add(lblRol);
             grpDatos.Controls.Add(cmbRol);
+            grpDatos.Controls.Add(lblContraseña);
+            grpDatos.Controls.Add(txtContraseña);
             grpDatos.Controls.Add(lblEstado);
             grpDatos.Controls.Add(cmbEstado);
             grpDatos.Location = new Point(12, 297);
@@ -135,6 +141,22 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             cmbRol.Size = new Size(170, 23);
             cmbRol.TabIndex = 5;
 
+            // lblContraseña
+            lblContraseña.AutoSize = true;
+            lblContraseña.Location = new Point(6, 75);
+            lblContraseña.Name = "lblContraseña";
+            lblContraseña.Size = new Size(75, 15);
+            lblContraseña.TabIndex = 8;
+            lblContraseña.Text = "Contraseña:";
+
+            // txtContraseña
+            txtContraseña.Location = new Point(6, 93);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(200, 23);
+            txtContraseña.TabIndex = 9;
+            txtContraseña.UseSystemPasswordChar = true;
+            txtContraseña.PlaceholderText = "Ingresa la contraseña";
+
             // lblEstado
             lblEstado.AutoSize = true;
             lblEstado.Location = new Point(710, 25);
@@ -156,7 +178,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             grpBotones.Controls.Add(btnEliminar);
             grpBotones.Controls.Add(btnRestablecerContraseña);
             grpBotones.Controls.Add(btnLimpiar);
-            grpBotones.Location = new Point(12, 433);
+            grpBotones.Location = new Point(12, 463);
             grpBotones.Name = "grpBotones";
             grpBotones.Size = new Size(900, 50);
             grpBotones.TabIndex = 3;
@@ -220,14 +242,14 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
             // lblTotal
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(12, 490);
+            lblTotal.Location = new Point(12, 520);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(59, 15);
             lblTotal.TabIndex = 4;
             lblTotal.Text = "Total: 0";
 
             // UsuariosForm
-            ClientSize = new Size(924, 510);
+            ClientSize = new Size(924, 540);
             Controls.Add(lblTitulo);
             Controls.Add(dgvUsuarios);
             Controls.Add(grpDatos);

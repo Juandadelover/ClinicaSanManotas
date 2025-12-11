@@ -120,17 +120,20 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     FechaCreacion = DateTime.Now
                 };
 
-                // Generar contraseña temporal segura y aleatoria
-                string passwordTemporal = GenerarContraseñaTemporal();
-                nuevoUsuario.PasswordHash = SecurityHelper.GenerarHashContraseña(passwordTemporal);
+                // Usar la contraseña ingresada por el admin
+                string contraseña = txtContraseña.Text;
+                nuevoUsuario.PasswordHash = SecurityHelper.GenerarHashContraseña(contraseña);
 
                 _unitOfWork.Usuarios.Add(nuevoUsuario);
                 _unitOfWork.SaveChanges();
 
-                LogHelper.Info($"Usuario '{nuevoUsuario.Username}' creado exitosamente por {SessionManager.UsuarioActual?.Username}. Se generó contraseña temporal.");
-                
-                // Mostrar la contraseña en un diálogo seguro
-                MostrarContraseñaTemporal(nuevoUsuario.Username, passwordTemporal);
+                LogHelper.Info($"Usuario '{nuevoUsuario.Username}' creado exitosamente por {SessionManager.UsuarioActual?.Username} con contraseña definida por el administrador.");
+
+                MessageBox.Show(
+                    $"✓ Usuario '{nuevoUsuario.Username}' creado exitosamente.\n\nPuede iniciar sesión con la contraseña proporcionada.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 CargarUsuarios();
                 LimpiarFormulario();
@@ -139,57 +142,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             {
                 LogHelper.Error($"Error al agregar usuario: {ex.Message}");
                 MessageBox.Show($"Error al agregar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// Genera una contraseña temporal segura y aleatoria
-        /// Requisitos: Mínimo 12 caracteres, mayúsculas, minúsculas, números y símbolos
-        /// </summary>
-        private string GenerarContraseñaTemporal()
-        {
-            const string mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const string minusculas = "abcdefghijklmnopqrstuvwxyz";
-            const string numeros = "0123456789";
-            const string simbolos = "!@#$%&*";
-            
-            Random random = new Random();
-            string contraseña = "";
-            
-            // Asegurar que tenga al menos un carácter de cada tipo
-            contraseña += mayusculas[random.Next(mayusculas.Length)];
-            contraseña += minusculas[random.Next(minusculas.Length)];
-            contraseña += numeros[random.Next(numeros.Length)];
-            contraseña += simbolos[random.Next(simbolos.Length)];
-            
-            // Llenar el resto de la contraseña (hasta 14 caracteres)
-            string todosLosCaracteres = mayusculas + minusculas + numeros + simbolos;
-            for (int i = contraseña.Length; i < 14; i++)
-            {
-                contraseña += todosLosCaracteres[random.Next(todosLosCaracteres.Length)];
-            }
-            
-            // Mezclar los caracteres
-            char[] caracteres = contraseña.ToCharArray();
-            for (int i = caracteres.Length - 1; i > 0; i--)
-            {
-                int indiceAleatorio = random.Next(i + 1);
-                char temp = caracteres[i];
-                caracteres[i] = caracteres[indiceAleatorio];
-                caracteres[indiceAleatorio] = temp;
-            }
-            
-            return new string(caracteres);
-        }
-
-        /// <summary>
-        /// Muestra la contraseña temporal en un formulario personalizado que permite seleccionar y copiar
-        /// </summary>
-        private void MostrarContraseñaTemporal(string usuario, string contraseña)
-        {
-            using (ContraseñaTemporialForm frm = new ContraseñaTemporialForm(usuario, contraseña))
-            {
-                frm.ShowDialog(this);
             }
         }
 
@@ -303,6 +255,18 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+                MessageBox.Show("La contraseña es requerida", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (txtContraseña.Text.Length < 6)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 6 caracteres", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             return true;
         }
 
@@ -310,6 +274,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         {
             txtUsername.Clear();
             txtEmail.Clear();
+            txtContraseña.Clear();
             cmbRol.SelectedIndex = -1;
             cmbEstado.SelectedIndex = 0;
             _usuarioActual = null;
