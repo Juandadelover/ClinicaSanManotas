@@ -21,23 +21,26 @@ Sistema de gestión para clínica médica desarrollado en C# con Windows Forms y
 
 ## Instalación
 
-1. Clonar repositorio
+1. Abrir MySQL Workbench
 2. Ejecutar scripts SQL en orden:
    ```
-   database/scripts/01-create-database.sql
-   database/scripts/02-insert-initial-data.sql
-   database/scripts/03-stored-procedures.sql
+   database/scripts/01-crear-base-datos.sql
+   database/scripts/02-insertar-datos.sql
    ```
-3. Compilar: `dotnet build`
-4. Ejecutar: `dotnet run`
+3. Abrir el proyecto en Visual Studio
+4. Compilar y ejecutar (F5)
 
 ## Usuarios de Prueba
 
-```
-admin / admin123
-recepcionista1 / recep123
-dr_garcia / doctor123
-```
+Todos tienen contraseña: **123456**
+
+| Usuario | Rol |
+|---------|-----|
+| admin | Administrador |
+| recepcionista1 | Recepcionista |
+| recepcionista2 | Recepcionista |
+| dr_garcia | Doctor |
+| dr_martinez | Doctor |
 
 ## Funcionalidades
 

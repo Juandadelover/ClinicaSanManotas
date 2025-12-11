@@ -11,9 +11,9 @@ Ejecutar en MySQL Workbench en este orden:
 
 | Usuario | Contraseña | Rol |
 |---------|------------|-----|
-| admin | admin123 | Administrador |
-| recepcionista1 | recep123 | Recepcionista |
-| dr_garcia | doctor123 | Doctor |
+| admin | 123456 | Administrador |
+| recepcionista1 | 123456 | Recepcionista |
+| dr_garcia | 123456 | Doctor |
 
 ## Tablas
 

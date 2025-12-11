@@ -29,14 +29,14 @@ INSERT INTO especialidad (Nombre, Descripcion) VALUES
 ('Neurología', 'Enfermedades del sistema nervioso'),
 ('Psiquiatría', 'Trastornos mentales y emocionales');
 
--- Usuarios (contraseña: admin123 para admin, recep123 para recepcionistas, doctor123 para doctores)
--- Hash SHA256 de admin123: jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=
+-- Usuarios (contraseña: 123456 para todos)
+-- Hash SHA256 de 123456: jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=
 INSERT INTO usuario (Username, Email, PasswordHash, Role, Estado) VALUES
 ('admin', 'admin@clinicamanotas.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', 'Admin', 'Activo'),
-('recepcionista1', 'recepcionista1@clinicamanotas.com', 'XTftMUzytchGK1KxLNUS4qxKGA51WY2k8Sv7DeptCmc=', 'Recepcionista', 'Activo'),
-('recepcionista2', 'recepcionista2@clinicamanotas.com', 'XTftMUzytchGK1KxLNUS4qxKGA51WY2k8Sv7DeptCmc=', 'Recepcionista', 'Activo'),
-('dr_garcia', 'garcia@clinicamanotas.com', '80jVYoYh89j1nIyr2g+OsKp+BRSpC+dXECCxM28mwRM=', 'Doctor', 'Activo'),
-('dr_martinez', 'martinez@clinicamanotas.com', '80jVYoYh89j1nIyr2g+OsKp+BRSpC+dXECCxM28mwRM=', 'Doctor', 'Activo');
+('recepcionista1', 'recepcionista1@clinicamanotas.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', 'Recepcionista', 'Activo'),
+('recepcionista2', 'recepcionista2@clinicamanotas.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', 'Recepcionista', 'Activo'),
+('dr_garcia', 'garcia@clinicamanotas.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', 'Doctor', 'Activo'),
+('dr_martinez', 'martinez@clinicamanotas.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=', 'Doctor', 'Activo');
 
 -- Médicos (con referencia a especialidades)
 INSERT INTO medico (Nombres, Apellidos, Email, Telefono, Licencia, EspecialidadId, HorarioInicio, HorarioFin, DiasAtencion) VALUES
