@@ -7,6 +7,9 @@
     <Compile Update="SistemaEmpleadosMySQL\UI\Forms\CitasForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\ContraseñaTemporialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SistemaEmpleadosMySQL\UI\Forms\DoctorForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -14,75 +14,90 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         public ContraseñaTemporialForm(string usuario, string contraseña)
         {
-            InitializeComponent();
             _contraseña = contraseña;
             this.Text = "Contraseña Temporal Generada";
             this.StartPosition = FormStartPosition.CenterParent;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.Size = new System.Drawing.Size(500, 350);
+            this.Size = new System.Drawing.Size(500, 400);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             
             ConfigurarControles(usuario, contraseña);
         }
 
         private void ConfigurarControles(string usuario, string contraseña)
         {
-            // Panel principal
+            // Panel principal con padding
             Panel pnlPrincipal = new Panel
             {
                 Dock = DockStyle.Fill,
-                Padding = new Padding(15)
+                Padding = new Padding(20),
+                BackColor = System.Drawing.Color.White
             };
 
-            // Icono/Titulo
-            PictureBox pbIcono = new PictureBox
-            {
-                Size = new System.Drawing.Size(40, 40),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                BackColor = System.Drawing.Color.FromArgb(0, 120, 215),
-                Location = new System.Drawing.Point(15, 15)
-            };
+            int yPos = 15;
 
+            // Título
             Label lblTitulo = new Label
             {
                 Text = "✓ Usuario creado exitosamente",
-                Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold),
+                Font = new System.Drawing.Font("Arial", 13, System.Drawing.FontStyle.Bold),
                 AutoSize = true,
-                Location = new System.Drawing.Point(65, 20)
+                Location = new System.Drawing.Point(20, yPos),
+                ForeColor = System.Drawing.Color.FromArgb(0, 120, 215)
             };
+            pnlPrincipal.Controls.Add(lblTitulo);
+            yPos += 40;
 
             // Información del usuario
-            Label lblUsuarioInfo = new Label
+            Label lblUsuarioLabel = new Label
             {
-                Text = $"Usuario: {usuario}",
-                Font = new System.Drawing.Font("Arial", 10),
-                AutoSize = true,
-                Location = new System.Drawing.Point(15, 65),
-                ForeColor = System.Drawing.Color.Black
-            };
-
-            // Label para contraseña
-            Label lblContraseña = new Label
-            {
-                Text = "Contraseña Temporal:",
+                Text = "Usuario:",
                 Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold),
                 AutoSize = true,
-                Location = new System.Drawing.Point(15, 100)
+                Location = new System.Drawing.Point(20, yPos)
             };
+            pnlPrincipal.Controls.Add(lblUsuarioLabel);
+            yPos += 25;
+
+            Label lblUsuarioValor = new Label
+            {
+                Text = usuario,
+                Font = new System.Drawing.Font("Arial", 10),
+                AutoSize = true,
+                Location = new System.Drawing.Point(20, yPos)
+            };
+            pnlPrincipal.Controls.Add(lblUsuarioValor);
+            yPos += 35;
+
+            // Label para contraseña
+            Label lblContraseñaLabel = new Label
+            {
+                Text = "Contraseña Temporal (Seleccionable):",
+                Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold),
+                AutoSize = true,
+                Location = new System.Drawing.Point(20, yPos)
+            };
+            pnlPrincipal.Controls.Add(lblContraseñaLabel);
+            yPos += 25;
 
             // TextBox con la contraseña (seleccionable)
             TextBox txtContraseña = new TextBox
             {
                 Text = contraseña,
-                ReadOnly = true,
+                ReadOnly = false,
                 Font = new System.Drawing.Font("Courier New", 11, System.Drawing.FontStyle.Bold),
                 ForeColor = System.Drawing.Color.White,
                 BackColor = System.Drawing.Color.FromArgb(51, 51, 51),
-                Location = new System.Drawing.Point(15, 130),
-                Size = new System.Drawing.Size(450, 35),
-                BorderStyle = BorderStyle.Fixed3D
+                Location = new System.Drawing.Point(20, yPos),
+                Size = new System.Drawing.Size(440, 40),
+                BorderStyle = BorderStyle.Fixed3D,
+                Multiline = false
             };
+            pnlPrincipal.Controls.Add(txtContraseña);
+            yPos += 55;
 
             // Botón Copiar
             Button btnCopiar = new Button
@@ -91,8 +106,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 Font = new System.Drawing.Font("Arial", 10),
                 BackColor = System.Drawing.Color.FromArgb(0, 120, 215),
                 ForeColor = System.Drawing.Color.White,
-                Location = new System.Drawing.Point(15, 180),
-                Size = new System.Drawing.Size(220, 35),
+                Location = new System.Drawing.Point(20, yPos),
+                Size = new System.Drawing.Size(200, 35),
                 Cursor = Cursors.Hand,
                 FlatStyle = FlatStyle.Flat
             };
@@ -102,7 +117,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 try
                 {
                     Clipboard.SetText(contraseña);
-                    MessageBox.Show("Contraseña copiada al portapapeles", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("✓ Contraseña copiada al portapapeles", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LogHelper.Info($"Contraseña temporal copiada para usuario '{usuario}'");
                 }
                 catch (Exception ex)
@@ -111,36 +126,33 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 }
             };
 
-            // Información importante
-            Label lblImportante = new Label
-            {
-                Text = "⚠ IMPORTANTE:",
-                Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold),
-                AutoSize = true,
-                Location = new System.Drawing.Point(15, 230),
-                ForeColor = System.Drawing.Color.FromArgb(255, 140, 0)
-            };
+            pnlPrincipal.Controls.Add(btnCopiar);
+            yPos += 50;
 
+            // Información importante
             TextBox txtInformacion = new TextBox
             {
-                Text = "• Esta contraseña se muestra solo esta vez\n• Guarde la contraseña de forma segura\n• El usuario DEBE cambiarla en el primer login\n• Puede seleccionar el texto para copiar",
+                Text = "⚠ IMPORTANTE:\r\n• Esta contraseña se muestra solo esta vez\r\n• Guarde la contraseña de forma segura\r\n• El usuario DEBE cambiarla en el primer login\r\n• Puede seleccionar y copiar el texto con Ctrl+C",
                 ReadOnly = true,
                 Multiline = true,
                 Font = new System.Drawing.Font("Arial", 9),
-                BackColor = System.Drawing.Color.FromArgb(245, 245, 245),
-                Location = new System.Drawing.Point(15, 255),
-                Size = new System.Drawing.Size(450, 70),
-                BorderStyle = BorderStyle.Fixed3D
+                BackColor = System.Drawing.Color.FromArgb(255, 250, 205),
+                ForeColor = System.Drawing.Color.FromArgb(128, 64, 0),
+                Location = new System.Drawing.Point(20, yPos),
+                Size = new System.Drawing.Size(440, 80),
+                BorderStyle = BorderStyle.Fixed3D,
+                WordWrap = true
             };
+            pnlPrincipal.Controls.Add(txtInformacion);
 
-            // Botón Aceptar
+            // Botón Aceptar en la parte inferior
             Button btnAceptar = new Button
             {
                 Text = "Aceptar",
                 Font = new System.Drawing.Font("Arial", 10),
                 BackColor = System.Drawing.Color.FromArgb(0, 150, 76),
                 ForeColor = System.Drawing.Color.White,
-                Location = new System.Drawing.Point(385, 330),
+                Location = new System.Drawing.Point(380, 360),
                 Size = new System.Drawing.Size(80, 30),
                 DialogResult = DialogResult.OK,
                 FlatStyle = FlatStyle.Flat,
@@ -152,14 +164,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 this.Close();
             };
 
-            // Agregar controles al panel
-            pnlPrincipal.Controls.Add(lblTitulo);
-            pnlPrincipal.Controls.Add(lblUsuarioInfo);
-            pnlPrincipal.Controls.Add(lblContraseña);
-            pnlPrincipal.Controls.Add(txtContraseña);
-            pnlPrincipal.Controls.Add(btnCopiar);
-            pnlPrincipal.Controls.Add(lblImportante);
-            pnlPrincipal.Controls.Add(txtInformacion);
             pnlPrincipal.Controls.Add(btnAceptar);
 
             this.Controls.Add(pnlPrincipal);
