@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLINICA_SAN_MANOTAS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5078cd35d1625881aa0864adc644b019f4122222")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4eb15639d17764d531ecde51204a8793d0fe246c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CLINICA_SAN_MANOTAS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CLINICA_SAN_MANOTAS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

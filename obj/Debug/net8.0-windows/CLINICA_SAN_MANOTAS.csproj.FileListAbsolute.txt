@@ -1,8 +1,4 @@
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.exe
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.deps.json
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.runtimeconfig.json
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.dll
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.pdb
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\Google.Protobuf.dll
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
@@ -25,5 +21,3 @@ C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLI
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\obj\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.dll
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\obj\Debug\net8.0-windows\refint\CLINICA_SAN_MANOTAS.dll
 C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\obj\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.pdb
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\obj\Debug\net8.0-windows\CLINICA_SAN_MANOTAS.genruntimeconfig.cache
-C:\Users\aquil\OneDrive\Escritorio\Nueva carpeta\SENA\MANOTAS\EVALUACIÓN C#\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\CLINICA_SAN_MANOTAS\obj\Debug\net8.0-windows\ref\CLINICA_SAN_MANOTAS.dll
