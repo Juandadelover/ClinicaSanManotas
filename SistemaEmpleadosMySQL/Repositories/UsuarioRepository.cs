@@ -217,6 +217,30 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
+        /// <summary>
+        /// Elimina un usuario de la base de datos (eliminación real)
+        /// </summary>
+        public override void Remove(Usuario usuario)
+        {
+            try
+            {
+                if (usuario == null)
+                    throw new ArgumentNullException(nameof(usuario));
+
+                string query = "DELETE FROM Usuario WHERE UserId = @id";
+                var param = new MySqlParameter("@id", usuario.UserId);
+                
+                _db.ExecuteNonQuery(query, param);
+                
+                LogHelper.Info($"Usuario '{usuario.Username}' (ID: {usuario.UserId}) eliminado de la base de datos");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"Error eliminando usuario {usuario?.Username}: {ex.Message}", ex);
+                throw;
+            }
+        }
+
         private Usuario MapearUsuario(MySqlDataReader reader)
         {
             return new Usuario
