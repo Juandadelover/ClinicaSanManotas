@@ -121,7 +121,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 };
 
                 // Usar la contraseña ingresada por el admin
-                string contraseña = txtContraseña.Text;
+                string contraseña = txtContraseña.Text.Trim();
                 nuevoUsuario.PasswordHash = SecurityHelper.GenerarHashContraseña(contraseña);
 
                 _unitOfWork.Usuarios.Add(nuevoUsuario);
