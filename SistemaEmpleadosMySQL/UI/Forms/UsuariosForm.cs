@@ -183,34 +183,13 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         }
 
         /// <summary>
-        /// Muestra la contraseña temporal en un diálogo seguro con opción de copiar
+        /// Muestra la contraseña temporal en un formulario personalizado que permite seleccionar y copiar
         /// </summary>
         private void MostrarContraseñaTemporal(string usuario, string contraseña)
         {
-            string mensaje = $@"✓ Usuario creado exitosamente
-
-USUARIO: {usuario}
-CONTRASEÑA TEMPORAL: {contraseña}
-
-IMPORTANTE:
-• Esta contraseña se muestra solo esta vez
-• Recomendamos copiar y guardarla de forma segura
-• El usuario DEBE cambiar la contraseña en su primer login
-• Use Ctrl+C para copiar la contraseña
-
-Haga clic en Aceptar para continuar.";
-
-            MessageBox.Show(mensaje, "Contraseña Temporal Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            // Copiar a portapapeles automáticamente
-            try
+            using (ContraseñaTemporialForm frm = new ContraseñaTemporialForm(usuario, contraseña))
             {
-                System.Windows.Forms.Clipboard.SetText(contraseña);
-                LogHelper.Info($"Contraseña temporal copiada al portapapeles para usuario '{usuario}'");
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Warning($"No se pudo copiar la contraseña al portapapeles: {ex.Message}");
+                frm.ShowDialog(this);
             }
         }
 
