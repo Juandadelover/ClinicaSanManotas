@@ -120,15 +120,17 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     FechaCreacion = DateTime.Now
                 };
 
-                // Generar contraseña por defecto
-                string passwordPorDefecto = "Usuario123!";
-                nuevoUsuario.PasswordHash = SecurityHelper.GenerarHashContraseña(passwordPorDefecto);
+                // Generar contraseña temporal segura y aleatoria
+                string passwordTemporal = GenerarContraseñaTemporal();
+                nuevoUsuario.PasswordHash = SecurityHelper.GenerarHashContraseña(passwordTemporal);
 
                 _unitOfWork.Usuarios.Add(nuevoUsuario);
                 _unitOfWork.SaveChanges();
 
-                LogHelper.Info($"Usuario '{nuevoUsuario.Username}' creado exitosamente por {SessionManager.UsuarioActual?.Username}");
-                MessageBox.Show($"Usuario creado exitosamente.\nContraseña temporal: {passwordPorDefecto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LogHelper.Info($"Usuario '{nuevoUsuario.Username}' creado exitosamente por {SessionManager.UsuarioActual?.Username}. Se generó contraseña temporal.");
+                
+                // Mostrar la contraseña en un diálogo seguro
+                MostrarContraseñaTemporal(nuevoUsuario.Username, passwordTemporal);
 
                 CargarUsuarios();
                 LimpiarFormulario();
@@ -137,6 +139,78 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             {
                 LogHelper.Error($"Error al agregar usuario: {ex.Message}");
                 MessageBox.Show($"Error al agregar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Genera una contraseña temporal segura y aleatoria
+        /// Requisitos: Mínimo 12 caracteres, mayúsculas, minúsculas, números y símbolos
+        /// </summary>
+        private string GenerarContraseñaTemporal()
+        {
+            const string mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string minusculas = "abcdefghijklmnopqrstuvwxyz";
+            const string numeros = "0123456789";
+            const string simbolos = "!@#$%&*";
+            
+            Random random = new Random();
+            string contraseña = "";
+            
+            // Asegurar que tenga al menos un carácter de cada tipo
+            contraseña += mayusculas[random.Next(mayusculas.Length)];
+            contraseña += minusculas[random.Next(minusculas.Length)];
+            contraseña += numeros[random.Next(numeros.Length)];
+            contraseña += simbolos[random.Next(simbolos.Length)];
+            
+            // Llenar el resto de la contraseña (hasta 14 caracteres)
+            string todosLosCaracteres = mayusculas + minusculas + numeros + simbolos;
+            for (int i = contraseña.Length; i < 14; i++)
+            {
+                contraseña += todosLosCaracteres[random.Next(todosLosCaracteres.Length)];
+            }
+            
+            // Mezclar los caracteres
+            char[] caracteres = contraseña.ToCharArray();
+            for (int i = caracteres.Length - 1; i > 0; i--)
+            {
+                int indiceAleatorio = random.Next(i + 1);
+                char temp = caracteres[i];
+                caracteres[i] = caracteres[indiceAleatorio];
+                caracteres[indiceAleatorio] = temp;
+            }
+            
+            return new string(caracteres);
+        }
+
+        /// <summary>
+        /// Muestra la contraseña temporal en un diálogo seguro con opción de copiar
+        /// </summary>
+        private void MostrarContraseñaTemporal(string usuario, string contraseña)
+        {
+            string mensaje = $@"✓ Usuario creado exitosamente
+
+USUARIO: {usuario}
+CONTRASEÑA TEMPORAL: {contraseña}
+
+IMPORTANTE:
+• Esta contraseña se muestra solo esta vez
+• Recomendamos copiar y guardarla de forma segura
+• El usuario DEBE cambiar la contraseña en su primer login
+• Use Ctrl+C para copiar la contraseña
+
+Haga clic en Aceptar para continuar.";
+
+            MessageBox.Show(mensaje, "Contraseña Temporal Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            // Copiar a portapapeles automáticamente
+            try
+            {
+                System.Windows.Forms.Clipboard.SetText(contraseña);
+                LogHelper.Info($"Contraseña temporal copiada al portapapeles para usuario '{usuario}'");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Warning($"No se pudo copiar la contraseña al portapapeles: {ex.Message}");
             }
         }
 
@@ -198,32 +272,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             {
                 LogHelper.Error($"Error al eliminar usuario: {ex.Message}");
                 MessageBox.Show($"Error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnRestablecerContraseña_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_usuarioActual == null)
-                {
-                    MessageBox.Show("Por favor selecciona un usuario", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                string nuevaContraseña = "Usuario123!";
-                _usuarioActual.PasswordHash = SecurityHelper.GenerarHashContraseña(nuevaContraseña);
-
-                _unitOfWork.Usuarios.Update(_usuarioActual);
-                _unitOfWork.SaveChanges();
-
-                LogHelper.Info($"Contraseña del usuario '{_usuarioActual.Username}' restablecida por {SessionManager.UsuarioActual?.Username}");
-                MessageBox.Show($"Contraseña restablecida exitosamente.\nNueva contraseña: {nuevaContraseña}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Error($"Error al restablecer contraseña: {ex.Message}");
-                MessageBox.Show($"Error al restablecer la contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -301,12 +349,82 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            btnEliminar_Click(sender, e);
+            EliminarUsuarioSeguro();
         }
 
         private void BtnRestablecerContraseña_Click(object sender, EventArgs e)
         {
-            btnRestablecerContraseña_Click(sender, e);
+            try
+            {
+                if (_usuarioActual == null)
+                {
+                    MessageBox.Show("Por favor selecciona un usuario", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                string nuevaContraseña = "Usuario123!";
+                _usuarioActual.PasswordHash = SecurityHelper.GenerarHashContraseña(nuevaContraseña);
+
+                _unitOfWork.Usuarios.Update(_usuarioActual);
+                _unitOfWork.SaveChanges();
+
+                LogHelper.Info($"Contraseña del usuario '{_usuarioActual.Username}' restablecida por {SessionManager.UsuarioActual?.Username}");
+                MessageBox.Show($"Contraseña restablecida exitosamente.\nNueva contraseña: {nuevaContraseña}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"Error al restablecer contraseña: {ex.Message}");
+                MessageBox.Show($"Error al restablecer la contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Evento para eliminar usuario (con validación)
+        /// </summary>
+        public void EliminarUsuarioSeguro()
+        {
+            try
+            {
+                if (_usuarioActual == null)
+                {
+                    MessageBox.Show("Por favor selecciona un usuario para eliminar", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Validar que no sea el último admin
+                if (_usuarioActual.Role == "Admin")
+                {
+                    var admins = _unitOfWork.Usuarios.GetAll()?.Where(u => u.Role == "Admin").Count() ?? 0;
+                    if (admins <= 1)
+                    {
+                        MessageBox.Show("No puedes eliminar el último usuario Admin del sistema", "Restricción", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // Confirmar eliminación
+                if (MessageBox.Show(
+                    $"¿Estás seguro de que deseas eliminar al usuario '{_usuarioActual.Username}'?\n\nEsta acción no se puede deshacer.",
+                    "Confirmación de eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    // Eliminar usuario
+                    _unitOfWork.Usuarios.Remove(_usuarioActual);
+                    _unitOfWork.SaveChanges();
+
+                    LogHelper.Info($"Usuario '{_usuarioActual.Username}' eliminado por {SessionManager.UsuarioActual?.Username}");
+                    MessageBox.Show("Usuario eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CargarUsuarios();
+                    LimpiarFormulario();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error($"Error al eliminar usuario: {ex.Message}");
+                MessageBox.Show($"Error al eliminar el usuario: {ex.Message}\n\nDetalles: {ex.InnerException?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
