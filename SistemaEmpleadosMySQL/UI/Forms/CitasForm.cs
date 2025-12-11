@@ -33,6 +33,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             CargarMedicos();
             CargarEstados();
             CargarCitasEnFiltros();
+            
+            // Inicializar fechas de filtro con rango amplio (últimos 6 meses a próximos 6 meses)
+            dtpFiltroFechaInicio.Value = DateTime.Now.AddMonths(-6);
+            dtpFiltroFechaFin.Value = DateTime.Now.AddMonths(6);
+            
             CargarCitas();
             LimpiarFormulario();
 
@@ -548,6 +553,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 DateTime fechaInicio = dtpFiltroFechaInicio.Value;
                 DateTime fechaFin = dtpFiltroFechaFin.Value;
                 
+                // Asegurar que la fecha de fin sea al final del día
+                fechaFin = fechaFin.AddHours(23).AddMinutes(59).AddSeconds(59);
+                
                 // Obtener Paciente solo si no es "Todos"
                 Paciente pacienteSeleccionado = null;
                 if (cmbFiltroPaciente.SelectedIndex > 0)
@@ -568,9 +576,20 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     if (filtroEstado != "Todos" && cita.Estado != filtroEstado)
                         continue;
 
-                    // Filtro por Rango de Fechas
-                    if (cita.Fecha.Date < fechaInicio.Date || cita.Fecha.Date > fechaFin.Date)
-                        continue;
+                    // Filtro por Rango de Fechas (SOLO aplicar si ambas fechas son diferentes)
+                    // Si la fecha de inicio y fin son el mismo día, incluir todo ese día
+                    // Si son días diferentes, aplicar el rango
+                    if (fechaInicio.Date != fechaFin.Date)
+                    {
+                        if (cita.Fecha.Date < fechaInicio.Date || cita.Fecha.Date > fechaFin.Date)
+                            continue;
+                    }
+                    else
+                    {
+                        // Si es el mismo día, incluir solo ese día
+                        if (cita.Fecha.Date != fechaInicio.Date)
+                            continue;
+                    }
 
                     // Filtro por Paciente
                     if (pacienteSeleccionado != null && cita.PacienteId != pacienteSeleccionado.PacienteId)
@@ -615,8 +634,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             try
             {
                 cmbFiltroEstado.SelectedIndex = 0;
-                dtpFiltroFechaInicio.Value = DateTime.Now.AddMonths(-1);
-                dtpFiltroFechaFin.Value = DateTime.Now;
+                dtpFiltroFechaInicio.Value = DateTime.Now.AddMonths(-6);
+                dtpFiltroFechaFin.Value = DateTime.Now.AddMonths(6);
                 cmbFiltroPaciente.SelectedIndex = 0;
                 cmbFiltroMedico.SelectedIndex = 0;
 

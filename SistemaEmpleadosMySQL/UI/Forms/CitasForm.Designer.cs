@@ -93,7 +93,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Arial", 14F, FontStyle.Bold);
-            lblTitulo.Location = new Point(12, 12);
+            lblTitulo.Location = new Point(11, 12);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(162, 22);
