@@ -142,5 +142,10 @@ namespace SistemaEmpleadosMySQL.Model
                 _ => "Desconocido"
             };
         }
+
+        public override string ToString()
+        {
+            return !string.IsNullOrEmpty(Nombres) ? Nombres : base.ToString();
+        }
     }
 }

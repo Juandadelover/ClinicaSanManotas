@@ -67,9 +67,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 var pacientes = _unitOfWork.Pacientes.GetAll();
                 if (pacientes != null)
                 {
-                    cmbPaciente.DataSource = pacientes;
                     cmbPaciente.DisplayMember = "Nombres";
                     cmbPaciente.ValueMember = "PacienteId";
+                    cmbPaciente.DataSource = pacientes.ToList();
                 }
             }
             catch (Exception ex)
@@ -85,9 +85,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 var medicos = _unitOfWork.Medicos.GetAll();
                 if (medicos != null)
                 {
-                    cmbMedico.DataSource = medicos;
                     cmbMedico.DisplayMember = "Nombres";
                     cmbMedico.ValueMember = "MedicoId";
+                    cmbMedico.DataSource = medicos.ToList();
                 }
             }
             catch (Exception ex)

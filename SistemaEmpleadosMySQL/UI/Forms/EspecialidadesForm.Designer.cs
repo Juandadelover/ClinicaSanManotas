@@ -68,6 +68,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             this.Name = "EspecialidadesForm";
             this.Text = "Gestión de Especialidades";
             this.Size = new System.Drawing.Size(800, 400);
+            this.Load += EspecialidadesForm_Load;
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvEspecialidades)).EndInit();
             this.ResumeLayout(false);

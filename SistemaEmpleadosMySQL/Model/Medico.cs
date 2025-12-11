@@ -139,5 +139,10 @@ namespace SistemaEmpleadosMySQL.Model
             var dias = DiasAtencion.Split(',');
             return Array.Exists(dias, d => d.Trim().Equals(dia, StringComparison.OrdinalIgnoreCase));
         }
+
+        public override string ToString()
+        {
+            return !string.IsNullOrEmpty(Nombres) ? Nombres : base.ToString();
+        }
     }
 }

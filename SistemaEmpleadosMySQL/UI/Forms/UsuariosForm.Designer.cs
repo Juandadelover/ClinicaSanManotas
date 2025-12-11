@@ -24,70 +24,94 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void InitializeComponent()
         {
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnRestablecerContraseña = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
-            this.SuspendLayout();
-
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Location = new System.Drawing.Point(12, 12);
-            this.dgvUsuarios.Size = new System.Drawing.Size(760, 250);
-
-            this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Location = new System.Drawing.Point(12, 270);
-            this.cmbRol.Size = new System.Drawing.Size(150, 23);
-
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Location = new System.Drawing.Point(170, 270);
-            this.txtUsername.Size = new System.Drawing.Size(150, 23);
-
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Location = new System.Drawing.Point(328, 270);
-            this.txtEmail.Size = new System.Drawing.Size(444, 23);
-
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.Location = new System.Drawing.Point(12, 301);
-            this.btnAgregar.Size = new System.Drawing.Size(100, 30);
-
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.Location = new System.Drawing.Point(120, 301);
-            this.btnActualizar.Size = new System.Drawing.Size(100, 30);
-
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Location = new System.Drawing.Point(228, 301);
-            this.btnEliminar.Size = new System.Drawing.Size(100, 30);
-
-            this.btnRestablecerContraseña.Name = "btnRestablecerContraseña";
-            this.btnRestablecerContraseña.Text = "Restablecer Contraseña";
-            this.btnRestablecerContraseña.Location = new System.Drawing.Point(336, 301);
-            this.btnRestablecerContraseña.Size = new System.Drawing.Size(150, 30);
-
-            this.Controls.Add(this.dgvUsuarios);
-            this.Controls.Add(this.cmbRol);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnRestablecerContraseña);
-
-            this.Name = "UsuariosForm";
-            this.Text = "Administración de Usuarios";
-            this.Size = new System.Drawing.Size(800, 400);
-            this.Load += this.UsuariosForm_Load;
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            dgvUsuarios = new DataGridView();
+            cmbRol = new ComboBox();
+            txtUsername = new TextBox();
+            txtEmail = new TextBox();
+            btnAgregar = new Button();
+            btnActualizar = new Button();
+            btnEliminar = new Button();
+            btnRestablecerContraseña = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvUsuarios
+            // 
+            dgvUsuarios.Location = new Point(278, 12);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.Size = new Size(760, 250);
+            dgvUsuarios.TabIndex = 0;
+            // 
+            // cmbRol
+            // 
+            cmbRol.Location = new Point(278, 270);
+            cmbRol.Name = "cmbRol";
+            cmbRol.Size = new Size(150, 23);
+            cmbRol.TabIndex = 1;
+            // 
+            // txtUsername
+            // 
+            txtUsername.Location = new Point(436, 270);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(150, 23);
+            txtUsername.TabIndex = 2;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(594, 270);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(444, 23);
+            txtEmail.TabIndex = 3;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(278, 301);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(100, 30);
+            btnAgregar.TabIndex = 4;
+            btnAgregar.Text = "Agregar";
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(386, 301);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(100, 30);
+            btnActualizar.TabIndex = 5;
+            btnActualizar.Text = "Actualizar";
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(494, 301);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(100, 30);
+            btnEliminar.TabIndex = 6;
+            btnEliminar.Text = "Eliminar";
+            // 
+            // btnRestablecerContraseña
+            // 
+            btnRestablecerContraseña.Location = new Point(602, 301);
+            btnRestablecerContraseña.Name = "btnRestablecerContraseña";
+            btnRestablecerContraseña.Size = new Size(150, 30);
+            btnRestablecerContraseña.TabIndex = 7;
+            btnRestablecerContraseña.Text = "Restablecer Contraseña";
+            // 
+            // UsuariosForm
+            // 
+            ClientSize = new Size(1277, 492);
+            Controls.Add(dgvUsuarios);
+            Controls.Add(cmbRol);
+            Controls.Add(txtUsername);
+            Controls.Add(txtEmail);
+            Controls.Add(btnAgregar);
+            Controls.Add(btnActualizar);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnRestablecerContraseña);
+            Name = "UsuariosForm";
+            Text = "Administración de Usuarios";
+            Load += UsuariosForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
