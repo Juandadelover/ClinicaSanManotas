@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\CitasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\DoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\EPSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\EspecialidadesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\MedicosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\PacientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\RecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\ReportesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SistemaEmpleadosMySQL\UI\Forms\UsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
