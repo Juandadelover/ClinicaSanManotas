@@ -8,17 +8,10 @@ using SistemaEmpleadosMySQL.Model;
 
 namespace SistemaEmpleadosMySQL.Repositories
 {
-    /// <summary>
-    /// Repositorio específico para Paciente
-    /// Proporciona todas las operaciones CRUD para gestión de pacientes
-    /// </summary>
     public class PacienteRepository : Repository<Paciente>, IPacienteRepository
     {
         public PacienteRepository() : base("Paciente") { }
 
-        /// <summary>
-        /// Obtiene todos los pacientes activos
-        /// </summary>
         public override IEnumerable<Paciente> GetAll()
         {
             try
@@ -43,9 +36,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes con paginación
-        /// </summary>
         public override IEnumerable<Paciente> GetAllPaged(int pageNumber, int pageSize)
         {
             try
@@ -75,9 +65,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene un paciente por ID
-        /// </summary>
         public override Paciente GetById(int id)
         {
             try
@@ -104,9 +91,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Busca pacientes por nombre o apellido
-        /// </summary>
         public IEnumerable<Paciente> BuscarPorNombre(string nombre, int pageNumber = 1, int pageSize = 10)
         {
             try
@@ -144,9 +128,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes por documento
-        /// </summary>
         public Paciente GetByDocumento(string documento)
         {
             try
@@ -173,9 +154,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes por EPS
-        /// </summary>
         public IEnumerable<Paciente> BuscarPorEPS(int epsId, int pageNumber = 1, int pageSize = 10)
         {
             try
@@ -209,9 +187,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes por género
-        /// </summary>
         public IEnumerable<Paciente> ObtenerPorGenero(string genero)
         {
             try
@@ -237,9 +212,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes dentro de un rango de edad
-        /// </summary>
         public IEnumerable<Paciente> BuscarPorEdad(int edadMin, int edadMax, int pageNumber = 1, int pageSize = 10)
         {
             try
@@ -277,9 +249,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene pacientes por ciudad
-        /// </summary>
         public IEnumerable<Paciente> ObtenerPorCiudad(string ciudad)
         {
             try
@@ -305,9 +274,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Agrega un nuevo paciente
-        /// </summary>
         public override void Add(Paciente entity)
         {
             try
@@ -350,9 +316,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Actualiza un paciente existente
-        /// </summary>
         public override void Update(Paciente entity)
         {
             try
@@ -403,9 +366,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Elimina un paciente (soft delete - marca como inactivo)
-        /// </summary>
         public override void Remove(Paciente entity)
         {
             try
@@ -422,9 +382,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene el total de pacientes activos
-        /// </summary>
         public int ObtenerTotal()
         {
             try
@@ -440,9 +397,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Mapea un MySqlDataReader a un objeto Paciente
-        /// </summary>
         private Paciente MapearPaciente(MySqlDataReader reader)
         {
             return new Paciente

@@ -9,11 +9,6 @@ using SistemaEmpleadosMySQL.Model;
 
 namespace SistemaEmpleadosMySQL.Repositories
 {
-    /// <summary>
-    /// Implementación genérica de Repositorio
-    /// Task: T017 - Implement Generic Repository
-    /// Proporciona CRUD básico para cualquier entidad
-    /// </summary>
     public class Repository<T> : IRepository<T> where T : class
     {
         protected DatabaseConnection _db;

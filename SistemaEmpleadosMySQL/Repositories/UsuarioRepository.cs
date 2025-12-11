@@ -8,10 +8,6 @@ using SistemaEmpleadosMySQL.Model;
 
 namespace SistemaEmpleadosMySQL.Repositories
 {
-    /// <summary>
-    /// Repositorio específico para Usuario
-    /// Task: T017 - Implement Specific Repositories
-    /// </summary>
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
         public UsuarioRepository() : base("Usuario") { }
@@ -217,9 +213,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Elimina un usuario de la base de datos (eliminación real)
-        /// </summary>
         public override void Remove(Usuario usuario)
         {
             try

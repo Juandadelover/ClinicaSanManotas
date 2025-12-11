@@ -7,11 +7,6 @@ using SistemaEmpleadosMySQL.Model;
 
 namespace SistemaEmpleadosMySQL.Repositories
 {
-    /// <summary>
-    /// Unit of Work Pattern
-    /// Task: T019 - Implement Unit of Work Pattern
-    /// Gestiona transacciones y múltiples repositorios como una unidad
-    /// </summary>
     public interface IUnitOfWork : IDisposable
     {
         IUsuarioRepository Usuarios { get; }
@@ -28,9 +23,6 @@ namespace SistemaEmpleadosMySQL.Repositories
         void RollbackTransaction();
     }
 
-    /// <summary>
-    /// Implementación de Unit of Work
-    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseConnection _db;
@@ -47,6 +39,14 @@ namespace SistemaEmpleadosMySQL.Repositories
         public UnitOfWork()
         {
             _db = DatabaseConnection.GetInstance();
+            _usuarioRepository = null!;
+            _pacienteRepository = null!;
+            _medicoRepository = null!;
+            _citaRepository = null!;
+            _especialidadRepository = null!;
+            _epsRepository = null!;
+            _auditLogRepository = null!;
+            _transaction = null!;
         }
 
         public IUsuarioRepository Usuarios
@@ -171,7 +171,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 if (_transaction != null)
                 {
                     _transaction.Commit();
-                    _transaction = null;
+                    _transaction = null!;
                     LogHelper.Info("Transacción confirmada");
                 }
             }
@@ -189,7 +189,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 if (_transaction != null)
                 {
                     _transaction.Rollback();
-                    _transaction = null;
+                    _transaction = null!;
                     LogHelper.Warning("Transacción revertida");
                 }
             }
@@ -230,9 +230,6 @@ namespace SistemaEmpleadosMySQL.Repositories
         }
     }
 
-    /// <summary>
-    /// Repositorio para Médico
-    /// </summary>
     public class MedicoRepository : Repository<Medico>, IMedicoRepository
     {
         public MedicoRepository() : base("Medico") { }
@@ -310,7 +307,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -436,7 +433,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -445,9 +442,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Agrega un nuevo médico
-        /// </summary>
         public override void Add(Medico entity)
         {
             try
@@ -489,9 +483,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Actualiza un médico existente
-        /// </summary>
         public override void Update(Medico entity)
         {
             try
@@ -540,9 +531,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Elimina un médico (soft delete - marca como inactivo)
-        /// </summary>
         public override void Remove(Medico entity)
         {
             try
@@ -579,16 +567,10 @@ namespace SistemaEmpleadosMySQL.Repositories
         }
     }
 
-    /// <summary>
-    /// Repositorio para Cita
-    /// </summary>
     public class CitaRepository : Repository<Cita>, ICitaRepository
     {
         public CitaRepository() : base("Cita") { }
 
-        /// <summary>
-        /// Obtiene todas las citas SIN filtrar por Estado (devuelve todas las citas)
-        /// </summary>
         public override IEnumerable<Cita> GetAll()
         {
             try
@@ -619,9 +601,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Obtiene una cita por su ID
-        /// </summary>
         public override Cita GetById(int id)
         {
             try
@@ -637,7 +616,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                     return cita;
                 }
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -646,9 +625,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Agrega una nueva cita
-        /// </summary>
         public override void Add(Cita entity)
         {
             try
@@ -677,9 +653,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Actualiza una cita existente
-        /// </summary>
         public override void Update(Cita entity)
         {
             try
@@ -717,9 +690,6 @@ namespace SistemaEmpleadosMySQL.Repositories
             }
         }
 
-        /// <summary>
-        /// Elimina una cita
-        /// </summary>
         public override void Remove(Cita entity)
         {
             try
@@ -950,9 +920,6 @@ namespace SistemaEmpleadosMySQL.Repositories
         }
     }
 
-    /// <summary>
-    /// Repositorio para Especialidad
-    /// </summary>
     public class EspecialidadRepository : Repository<Especialidad>, IEspecialidadRepository
     {
         public EspecialidadRepository() : base("Especialidad") { }
@@ -996,7 +963,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -1021,7 +988,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -1041,9 +1008,6 @@ namespace SistemaEmpleadosMySQL.Repositories
         }
     }
 
-    /// <summary>
-    /// Repositorio para EPS
-    /// </summary>
     public class EPSRepository : Repository<EPS>, IEPSRepository
     {
         public EPSRepository() : base("EPS") { }
@@ -1087,7 +1051,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -1112,7 +1076,7 @@ namespace SistemaEmpleadosMySQL.Repositories
                 }
 
                 reader.Close();
-                return null;
+                return null!;
             }
             catch (Exception ex)
             {
@@ -1137,9 +1101,6 @@ namespace SistemaEmpleadosMySQL.Repositories
         }
     }
 
-    /// <summary>
-    /// Repositorio para AuditLog
-    /// </summary>
     public class AuditLogRepository : Repository<AuditLog>, IAuditLogRepository
     {
         public AuditLogRepository() : base("AuditLog") { }

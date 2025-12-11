@@ -4,10 +4,6 @@ using SistemaEmpleadosMySQL.Helpers;
 
 namespace SistemaEmpleadosMySQL.DAO
 {
-    /// <summary>
-    /// Gestor de conexión a MySQL
-    /// Task: T015 - Configure DbContext and Connection String
-    /// </summary>
     public class DatabaseConnection
     {
         private static DatabaseConnection? _instance;
@@ -15,25 +11,15 @@ namespace SistemaEmpleadosMySQL.DAO
         private readonly string _connectionString;
         private static readonly object lockObject = new object();
 
-        /// <summary>
-        /// Cadena de conexión
-        /// Cambia esto según tu configuración de MySQL
-        /// </summary>
         private const string DEFAULT_CONNECTION_STRING = 
             "server=localhost; database=clinica_san_manotas; Uid=root; pwd=12345;";
 
-        /// <summary>
-        /// Constructor privado para Singleton
-        /// </summary>
         private DatabaseConnection(string connectionString = DEFAULT_CONNECTION_STRING)
         {
             _connectionString = connectionString;
             _connection = new MySqlConnection(connectionString);
         }
 
-        /// <summary>
-        /// Obtiene instancia singleton de DatabaseConnection
-        /// </summary>
         public static DatabaseConnection GetInstance(string connectionString = DEFAULT_CONNECTION_STRING)
         {
             if (_instance == null)
@@ -49,9 +35,6 @@ namespace SistemaEmpleadosMySQL.DAO
             return _instance;
         }
 
-        /// <summary>
-        /// Obtiene la conexión abierta
-        /// </summary>
         public MySqlConnection GetConnection()
         {
             if (_connection == null)
@@ -76,9 +59,6 @@ namespace SistemaEmpleadosMySQL.DAO
             return _connection;
         }
 
-        /// <summary>
-        /// Verifica si la conexión está abierta
-        /// </summary>
         public bool EstaConectado()
         {
             try
@@ -95,9 +75,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Cierra la conexión
-        /// </summary>
         public void CerrarConexion()
         {
             if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
@@ -114,9 +91,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Ejecuta una consulta SELECT
-        /// </summary>
         public MySqlDataReader ExecuteQuery(string query, params MySqlParameter[] parameters)
         {
             try
@@ -139,9 +113,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Ejecuta una consulta que retorna un escalar
-        /// </summary>
         public object ExecuteScalar(string query, params MySqlParameter[] parameters)
         {
             try
@@ -164,9 +135,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Ejecuta un INSERT, UPDATE o DELETE
-        /// </summary>
         public int ExecuteNonQuery(string query, params MySqlParameter[] parameters)
         {
             try
@@ -189,9 +157,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Ejecuta un procedimiento almacenado
-        /// </summary>
         public int ExecuteStoredProcedure(string nombreProcedimiento, params MySqlParameter[] parameters)
         {
             try
@@ -217,9 +182,6 @@ namespace SistemaEmpleadosMySQL.DAO
             }
         }
 
-        /// <summary>
-        /// Destructor - libera recursos
-        /// </summary>
         ~DatabaseConnection()
         {
             CerrarConexion();
