@@ -110,12 +110,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             }
         }
 
-        private void btnReportes_Click(object sender, EventArgs e)
-        {
-            ReportesForm reportesForm = new ReportesForm();
-            reportesForm.ShowDialog();
-        }
-
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(

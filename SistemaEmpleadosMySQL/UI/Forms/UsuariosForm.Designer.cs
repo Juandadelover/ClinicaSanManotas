@@ -63,13 +63,15 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             SuspendLayout();
 
             // lblTitulo
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Arial", 14F, FontStyle.Bold);
+            lblTitulo.AutoSize = false;
+            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(12, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(189, 22);
+            lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Administración de Usuarios";
+            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
 
             // dgvUsuarios
             dgvUsuarios.Location = new Point(12, 40);

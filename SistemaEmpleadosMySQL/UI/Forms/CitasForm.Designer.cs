@@ -91,14 +91,16 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Arial", 14F, FontStyle.Bold);
+            lblTitulo.AutoSize = false;
+            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(11, 12);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(162, 22);
+            lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Gestión de Citas";
+            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvCitas
             // 

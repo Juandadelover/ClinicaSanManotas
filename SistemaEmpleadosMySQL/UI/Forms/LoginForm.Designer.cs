@@ -26,141 +26,175 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            pnlPanel = new Panel();
+            pnlHeader = new Panel();
             lblTitulo = new Label();
+            lblSubtitulo = new Label();
             lblUsuario = new Label();
             txtUsuario = new TextBox();
             lblContraseña = new Label();
             txtContraseña = new TextBox();
             btnIngresar = new Button();
             btnSalir = new Button();
-            pnlPanel.SuspendLayout();
+            lblVersion = new Label();
+            pnlHeader.SuspendLayout();
             SuspendLayout();
             // 
-            // pnlPanel
+            // pnlHeader
             // 
-            pnlPanel.BackColor = SystemColors.Control;
-            pnlPanel.Controls.Add(lblTitulo);
-            pnlPanel.Controls.Add(lblUsuario);
-            pnlPanel.Controls.Add(txtUsuario);
-            pnlPanel.Controls.Add(lblContraseña);
-            pnlPanel.Controls.Add(txtContraseña);
-            pnlPanel.Controls.Add(btnIngresar);
-            pnlPanel.Controls.Add(btnSalir);
-            pnlPanel.Dock = DockStyle.Fill;
-            pnlPanel.Location = new Point(0, 0);
-            pnlPanel.Margin = new Padding(4, 3, 4, 3);
-            pnlPanel.Name = "pnlPanel";
-            pnlPanel.Size = new Size(904, 491);
-            pnlPanel.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(41, 128, 185);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Controls.Add(lblSubtitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(440, 130);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Arial", 18F, FontStyle.Bold);
-            lblTitulo.Location = new Point(301, 42);
-            lblTitulo.Margin = new Padding(4, 0, 4, 0);
+            lblTitulo.AutoSize = false;
+            lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(0, 25);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(292, 29);
+            lblTitulo.Size = new Size(440, 45);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "CLÍNICA SAN MANOTAS";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.AutoSize = false;
+            lblSubtitulo.Font = new Font("Segoe UI", 11F);
+            lblSubtitulo.ForeColor = Color.White;
+            lblSubtitulo.Location = new Point(0, 70);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(440, 30);
+            lblSubtitulo.TabIndex = 1;
+            lblSubtitulo.Text = "Sistema de Gestión Médica";
+            lblSubtitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Font = new Font("Arial", 10F);
-            lblUsuario.Location = new Point(268, 111);
-            lblUsuario.Margin = new Padding(4, 0, 4, 0);
+            lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblUsuario.ForeColor = Color.FromArgb(44, 62, 80);
+            lblUsuario.Location = new Point(63, 165);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(59, 16);
+            lblUsuario.Size = new Size(65, 19);
             lblUsuario.TabIndex = 1;
             lblUsuario.Text = "Usuario:";
             // 
             // txtUsuario
             // 
-            txtUsuario.Font = new Font("Arial", 10F);
-            txtUsuario.Location = new Point(268, 134);
-            txtUsuario.Margin = new Padding(4, 3, 4, 3);
+            txtUsuario.Font = new Font("Segoe UI", 11F);
+            txtUsuario.Location = new Point(63, 189);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(349, 23);
+            txtUsuario.Size = new Size(315, 27);
             txtUsuario.TabIndex = 0;
             // 
             // lblContraseña
             // 
             lblContraseña.AutoSize = true;
-            lblContraseña.Font = new Font("Arial", 10F);
-            lblContraseña.Location = new Point(268, 181);
-            lblContraseña.Margin = new Padding(4, 0, 4, 0);
+            lblContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblContraseña.ForeColor = Color.FromArgb(44, 62, 80);
+            lblContraseña.Location = new Point(63, 235);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(85, 16);
-            lblContraseña.TabIndex = 3;
+            lblContraseña.Size = new Size(90, 19);
+            lblContraseña.TabIndex = 2;
             lblContraseña.Text = "Contraseña:";
             // 
             // txtContraseña
             // 
-            txtContraseña.Font = new Font("Arial", 10F);
-            txtContraseña.Location = new Point(268, 204);
-            txtContraseña.Margin = new Padding(4, 3, 4, 3);
+            txtContraseña.Font = new Font("Segoe UI", 11F);
+            txtContraseña.Location = new Point(63, 259);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(349, 23);
+            txtContraseña.PasswordChar = '●';
+            txtContraseña.Size = new Size(315, 27);
             txtContraseña.TabIndex = 1;
             txtContraseña.KeyPress += txtContraseña_KeyPress;
             // 
             // btnIngresar
             // 
-            btnIngresar.BackColor = Color.Green;
-            btnIngresar.Font = new Font("Arial", 11F, FontStyle.Bold);
+            btnIngresar.BackColor = Color.FromArgb(46, 204, 113);
+            btnIngresar.FlatStyle = FlatStyle.Flat;
+            btnIngresar.FlatAppearance.BorderSize = 0;
+            btnIngresar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(327, 273);
-            btnIngresar.Margin = new Padding(4, 3, 4, 3);
+            btnIngresar.Location = new Point(63, 320);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(117, 40);
+            btnIngresar.Size = new Size(315, 42);
             btnIngresar.TabIndex = 2;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.Click += btnIngresar_Click;
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.Red;
-            btnSalir.Font = new Font("Arial", 11F, FontStyle.Bold);
-            btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(467, 273);
-            btnSalir.Margin = new Padding(4, 3, 4, 3);
+            btnSalir.BackColor = Color.FromArgb(189, 195, 199);
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.FlatAppearance.BorderSize = 0;
+            btnSalir.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnSalir.ForeColor = Color.FromArgb(44, 62, 80);
+            btnSalir.Location = new Point(63, 375);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(117, 40);
+            btnSalir.Size = new Size(315, 42);
             btnSalir.TabIndex = 3;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.Click += btnSalir_Click;
+            // 
+            // lblVersion
+            // 
+            lblVersion.AutoSize = false;
+            lblVersion.Font = new Font("Segoe UI", 8F);
+            lblVersion.ForeColor = Color.Gray;
+            lblVersion.Location = new Point(0, 455);
+            lblVersion.Name = "lblVersion";
+            lblVersion.Size = new Size(440, 20);
+            lblVersion.TabIndex = 4;
+            lblVersion.Text = "Versión 1.0.0";
+            lblVersion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(904, 491);
-            Controls.Add(pnlPanel);
-            Margin = new Padding(4, 3, 4, 3);
+            BackColor = Color.White;
+            ClientSize = new Size(440, 480);
+            Controls.Add(pnlHeader);
+            Controls.Add(lblUsuario);
+            Controls.Add(txtUsuario);
+            Controls.Add(lblContraseña);
+            Controls.Add(txtContraseña);
+            Controls.Add(btnIngresar);
+            Controls.Add(btnSalir);
+            Controls.Add(lblVersion);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CLINICA SAN MANOTAS - Iniciar Sesión";
             FormClosing += LoginForm_FormClosing;
             Load += LoginForm_Load;
-            pnlPanel.ResumeLayout(false);
-            pnlPanel.PerformLayout();
+            pnlHeader.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlPanel;
+        private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

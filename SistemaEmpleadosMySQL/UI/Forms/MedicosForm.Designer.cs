@@ -112,22 +112,27 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             SuspendLayout();
 
             // lblTitulo
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(51, 51, 51);
+            lblTitulo.AutoSize = false;
+            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(12, 12);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(250, 30);
+            lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "✚ Gestión de Médicos";
+            lblTitulo.Text = "Gestión de Médicos";
+            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
 
             // dgvMedicos
-            dgvMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(70, 130, 180);
+            dgvMedicos.BackgroundColor = Color.White;
+            dgvMedicos.BorderStyle = BorderStyle.FixedSingle;
+            dgvMedicos.ColumnHeadersHeight = 35;
+            dgvMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvMedicos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 152, 219);
             dgvMedicos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvMedicos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvMedicos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            dgvMedicos.EnableHeadersVisualStyles = false;
+            dgvMedicos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 248, 250);
             dgvMedicos.Location = new Point(12, 50);
             dgvMedicos.Margin = new Padding(4, 3, 4, 3);
             dgvMedicos.Name = "dgvMedicos";
@@ -136,7 +141,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             dgvMedicos.SelectionChanged += dgvMedicos_SelectionChanged;
 
             // pnlFiltros
-            pnlFiltros.BackColor = Color.FromArgb(240, 248, 255);
+            pnlFiltros.BackColor = Color.FromArgb(236, 240, 241);
             pnlFiltros.BorderStyle = BorderStyle.FixedSingle;
             pnlFiltros.Controls.Add(lblFiltroNombre);
             pnlFiltros.Controls.Add(txtFiltroNombre);

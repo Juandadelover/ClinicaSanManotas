@@ -73,27 +73,37 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Arial", 14F, FontStyle.Bold);
+            lblTitulo.AutoSize = false;
+            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(12, 12);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(178, 22);
+            lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Gestión Pacientes";
+            lblTitulo.Text = "Gestión de Pacientes";
+            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvPacientes
             // 
-            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPacientes.BackgroundColor = Color.White;
+            dgvPacientes.BorderStyle = BorderStyle.FixedSingle;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 152, 219);
+            dgvPacientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvPacientes.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvPacientes.ColumnHeadersHeight = 35;
+            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvPacientes.EnableHeadersVisualStyles = false;
             dgvPacientes.Location = new Point(12, 46);
             dgvPacientes.Margin = new Padding(4, 3, 4, 3);
             dgvPacientes.Name = "dgvPacientes";
             dgvPacientes.Size = new Size(1027, 199);
             dgvPacientes.TabIndex = 1;
+            dgvPacientes.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 248, 250);
             // 
             // pnlFiltro
             // 
-            pnlFiltro.BackColor = SystemColors.ControlLight;
+            pnlFiltro.BackColor = Color.FromArgb(236, 240, 241);
             pnlFiltro.BorderStyle = BorderStyle.FixedSingle;
             pnlFiltro.Controls.Add(lblBuscar);
             pnlFiltro.Controls.Add(txtBuscar);
