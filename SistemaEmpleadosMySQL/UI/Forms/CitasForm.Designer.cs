@@ -91,19 +91,21 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = false;
-            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitulo.Location = new Point(11, 12);
+            lblTitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.Black;
+            lblTitulo.Location = new Point(4, 0);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Gestión de Citas";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitulo.Click += lblTitulo_Click;
             // 
             // dgvCitas
             // 
+            dgvCitas.BackgroundColor = Color.AliceBlue;
+            dgvCitas.GridColor = SystemColors.InactiveCaptionText;
             dgvCitas.Location = new Point(168, 125);
             dgvCitas.Name = "dgvCitas";
             dgvCitas.Size = new Size(760, 250);
@@ -162,7 +164,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnAgregar
             // 
-            btnAgregar.BackColor = Color.FromArgb(34, 139, 34);
+            btnAgregar.BackColor = Color.Green;
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.ForeColor = Color.White;
             btnAgregar.Location = new Point(6, 110);
@@ -175,7 +177,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnActualizar
             // 
-            btnActualizar.BackColor = Color.FromArgb(30, 144, 255);
+            btnActualizar.BackColor = Color.SteelBlue;
             btnActualizar.FlatStyle = FlatStyle.Flat;
             btnActualizar.ForeColor = Color.White;
             btnActualizar.Location = new Point(114, 110);
@@ -188,7 +190,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = Color.FromArgb(220, 20, 60);
+            btnEliminar.BackColor = Color.Red;
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Location = new Point(222, 110);
@@ -201,9 +203,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnLimpiar
             // 
-            btnLimpiar.BackColor = Color.FromArgb(169, 169, 169);
+            btnLimpiar.BackColor = Color.Gray;
             btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.ForeColor = Color.Black;
+            btnLimpiar.ForeColor = Color.Transparent;
             btnLimpiar.Location = new Point(330, 110);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(100, 30);
@@ -238,7 +240,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             grpEdicion.Controls.Add(btnActualizar);
             grpEdicion.Controls.Add(btnEliminar);
             grpEdicion.Controls.Add(btnLimpiar);
-            grpEdicion.Location = new Point(168, 385);
+            grpEdicion.Location = new Point(168, 382);
             grpEdicion.Name = "grpEdicion";
             grpEdicion.Size = new Size(760, 140);
             grpEdicion.TabIndex = 13;
@@ -369,7 +371,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnAplicarFiltros
             // 
-            btnAplicarFiltros.BackColor = Color.FromArgb(30, 144, 255);
+            btnAplicarFiltros.BackColor = Color.SteelBlue;
             btnAplicarFiltros.FlatStyle = FlatStyle.Flat;
             btnAplicarFiltros.ForeColor = Color.White;
             btnAplicarFiltros.Location = new Point(555, 10);
@@ -382,7 +384,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnLimpiarFiltros
             // 
-            btnLimpiarFiltros.BackColor = Color.FromArgb(169, 169, 169);
+            btnLimpiarFiltros.BackColor = Color.White;
             btnLimpiarFiltros.FlatStyle = FlatStyle.Flat;
             btnLimpiarFiltros.ForeColor = Color.Black;
             btnLimpiarFiltros.Location = new Point(660, 10);
@@ -439,7 +441,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             grpEdicion.PerformLayout();
             pnlFiltros.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
     }
 }

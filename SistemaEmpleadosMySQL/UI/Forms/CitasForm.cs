@@ -33,11 +33,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             CargarMedicos();
             CargarEstados();
             CargarCitasEnFiltros();
-            
+
             // Inicializar fechas de filtro con rango amplio (últimos 6 meses a próximos 6 meses)
             dtpFiltroFechaInicio.Value = DateTime.Now.AddMonths(-6);
             dtpFiltroFechaFin.Value = DateTime.Now.AddMonths(6);
-            
+
             CargarCitas();
             LimpiarFormulario();
 
@@ -156,14 +156,14 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             try
             {
                 dgvCitas.Rows.Clear();
-                
+
                 var citas = _unitOfWork.Citas.GetAll();
 
                 int totalCitas = 0;
                 if (citas != null)
                 {
                     totalCitas = citas.Count();
-                    
+
                     foreach (var cita in citas)
                     {
                         var paciente = _unitOfWork.Pacientes.GetById(cita.PacienteId);
@@ -552,17 +552,17 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 string filtroEstado = cmbFiltroEstado.SelectedItem?.ToString() ?? "Todos";
                 DateTime fechaInicio = dtpFiltroFechaInicio.Value;
                 DateTime fechaFin = dtpFiltroFechaFin.Value;
-                
+
                 // Asegurar que la fecha de fin sea al final del día
                 fechaFin = fechaFin.AddHours(23).AddMinutes(59).AddSeconds(59);
-                
+
                 // Obtener Paciente solo si no es "Todos"
                 Paciente pacienteSeleccionado = null;
                 if (cmbFiltroPaciente.SelectedIndex > 0)
                 {
                     pacienteSeleccionado = cmbFiltroPaciente.SelectedItem as Paciente;
                 }
-                
+
                 // Obtener Médico solo si no es "Todos"
                 Medico medicoSeleccionado = null;
                 if (cmbFiltroMedico.SelectedIndex > 0)
@@ -646,6 +646,11 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             {
                 LogHelper.Error($"Error limpiando filtros: {ex.Message}");
             }
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

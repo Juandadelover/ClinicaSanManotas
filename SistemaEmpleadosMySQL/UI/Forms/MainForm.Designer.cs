@@ -15,209 +15,245 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void InitializeComponent()
         {
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblSubtitulo = new System.Windows.Forms.Label();
-            this.btnPacientes = new System.Windows.Forms.Button();
-            this.btnMedicos = new System.Windows.Forms.Button();
-            this.btnCitas = new System.Windows.Forms.Button();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btnEspecialidades = new System.Windows.Forms.Button();
-            this.btnEPS = new System.Windows.Forms.Button();
-            this.pnlFooter = new System.Windows.Forms.Panel();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.pnlMenu.SuspendLayout();
-            this.pnlFooter.SuspendLayout();
-            this.SuspendLayout();
-
+            pnlMenu = new Panel();
+            lblTitulo = new Label();
+            lblSubtitulo = new Label();
+            btnPacientes = new Button();
+            btnMedicos = new Button();
+            btnCitas = new Button();
+            btnUsuarios = new Button();
+            btnEspecialidades = new Button();
+            btnEPS = new Button();
+            pnlFooter = new Panel();
+            lblUsuario = new Label();
+            btnCerrarSesion = new Button();
+            pnlMenu.SuspendLayout();
+            pnlFooter.SuspendLayout();
+            SuspendLayout();
+            // 
             // pnlMenu
-            this.pnlMenu.BackColor = System.Drawing.Color.White;
-            this.pnlMenu.Controls.Add(this.lblTitulo);
-            this.pnlMenu.Controls.Add(this.lblSubtitulo);
-            this.pnlMenu.Controls.Add(this.btnPacientes);
-            this.pnlMenu.Controls.Add(this.btnMedicos);
-            this.pnlMenu.Controls.Add(this.btnCitas);
-            this.pnlMenu.Controls.Add(this.btnUsuarios);
-            this.pnlMenu.Controls.Add(this.btnEspecialidades);
-            this.pnlMenu.Controls.Add(this.btnEPS);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(800, 520);
-            this.pnlMenu.TabIndex = 0;
-
+            // 
+            pnlMenu.BackColor = Color.White;
+            pnlMenu.BackgroundImage = CLINICA_SAN_MANOTAS.Properties.Resources.fondo_de_pasillo_vacio;
+            pnlMenu.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlMenu.Controls.Add(lblTitulo);
+            pnlMenu.Controls.Add(lblSubtitulo);
+            pnlMenu.Controls.Add(btnPacientes);
+            pnlMenu.Controls.Add(btnMedicos);
+            pnlMenu.Controls.Add(btnCitas);
+            pnlMenu.Controls.Add(btnUsuarios);
+            pnlMenu.Controls.Add(btnEspecialidades);
+            pnlMenu.Controls.Add(btnEPS);
+            pnlMenu.Dock = DockStyle.Fill;
+            pnlMenu.Location = new Point(0, 0);
+            pnlMenu.Margin = new Padding(4, 3, 4, 3);
+            pnlMenu.Name = "pnlMenu";
+            pnlMenu.Size = new Size(1026, 600);
+            pnlMenu.TabIndex = 0;
+            pnlMenu.Paint += pnlMenu_Paint;
+            // 
             // lblTitulo
-            this.lblTitulo.AutoSize = false;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(41, 128, 185);
-            this.lblTitulo.Location = new System.Drawing.Point(0, 30);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(800, 40);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Panel de Control - Administrador";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(244, 66);
+            lblTitulo.Margin = new Padding(4, 0, 4, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(933, 78);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Panel de Control - Administrador";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // lblSubtitulo
-            this.lblSubtitulo.AutoSize = false;
-            this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblSubtitulo.ForeColor = System.Drawing.Color.Gray;
-            this.lblSubtitulo.Location = new System.Drawing.Point(0, 75);
-            this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(800, 25);
-            this.lblSubtitulo.TabIndex = 8;
-            this.lblSubtitulo.Text = "Seleccione una opción para gestionar";
-            this.lblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            lblSubtitulo.BackColor = Color.Transparent;
+            lblSubtitulo.Font = new Font("Segoe UI", 10F);
+            lblSubtitulo.ForeColor = Color.White;
+            lblSubtitulo.Location = new Point(244, 144);
+            lblSubtitulo.Margin = new Padding(4, 0, 4, 0);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(923, 29);
+            lblSubtitulo.TabIndex = 8;
+            lblSubtitulo.Text = "Seleccione una opción para gestionar";
+            lblSubtitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // btnPacientes
-            this.btnPacientes.BackColor = System.Drawing.Color.White;
-            this.btnPacientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPacientes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            this.btnPacientes.FlatAppearance.BorderSize = 2;
-            this.btnPacientes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnPacientes.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnPacientes.Location = new System.Drawing.Point(100, 163);
-            this.btnPacientes.Name = "btnPacientes";
-            this.btnPacientes.Size = new System.Drawing.Size(150, 58);
-            this.btnPacientes.TabIndex = 1;
-            this.btnPacientes.Text = "Gestionar Pacientes";
-            this.btnPacientes.UseVisualStyleBackColor = false;
-            this.btnPacientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPacientes.Click += new System.EventHandler(this.btnPacientes_Click);
-
+            // 
+            btnPacientes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnPacientes.BackColor = Color.DarkSlateGray;
+            btnPacientes.Cursor = Cursors.Hand;
+            btnPacientes.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnPacientes.FlatAppearance.BorderSize = 0;
+            btnPacientes.FlatStyle = FlatStyle.Flat;
+            btnPacientes.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnPacientes.ForeColor = Color.White;
+            btnPacientes.Location = new Point(351, 230);
+            btnPacientes.Margin = new Padding(4, 3, 4, 3);
+            btnPacientes.Name = "btnPacientes";
+            btnPacientes.Size = new Size(175, 67);
+            btnPacientes.TabIndex = 1;
+            btnPacientes.Text = "Gestionar Pacientes";
+            btnPacientes.UseVisualStyleBackColor = false;
+            btnPacientes.Click += btnPacientes_Click;
+            // 
             // btnMedicos
-            this.btnMedicos.BackColor = System.Drawing.Color.White;
-            this.btnMedicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMedicos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            this.btnMedicos.FlatAppearance.BorderSize = 2;
-            this.btnMedicos.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMedicos.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnMedicos.Location = new System.Drawing.Point(305, 163);
-            this.btnMedicos.Name = "btnMedicos";
-            this.btnMedicos.Size = new System.Drawing.Size(150, 58);
-            this.btnMedicos.TabIndex = 2;
-            this.btnMedicos.Text = "Gestionar Médicos";
-            this.btnMedicos.UseVisualStyleBackColor = false;
-            this.btnMedicos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMedicos.Click += new System.EventHandler(this.btnMedicos_Click);
-
+            // 
+            btnMedicos.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnMedicos.BackColor = Color.DarkSlateGray;
+            btnMedicos.Cursor = Cursors.Hand;
+            btnMedicos.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnMedicos.FlatAppearance.BorderSize = 0;
+            btnMedicos.FlatStyle = FlatStyle.Flat;
+            btnMedicos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnMedicos.ForeColor = Color.White;
+            btnMedicos.Location = new Point(590, 230);
+            btnMedicos.Margin = new Padding(4, 3, 4, 3);
+            btnMedicos.Name = "btnMedicos";
+            btnMedicos.Size = new Size(175, 67);
+            btnMedicos.TabIndex = 2;
+            btnMedicos.Text = "Gestionar Médicos";
+            btnMedicos.UseVisualStyleBackColor = false;
+            btnMedicos.Click += btnMedicos_Click;
+            // 
             // btnCitas
-            this.btnCitas.BackColor = System.Drawing.Color.White;
-            this.btnCitas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCitas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            this.btnCitas.FlatAppearance.BorderSize = 2;
-            this.btnCitas.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCitas.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnCitas.Location = new System.Drawing.Point(510, 163);
-            this.btnCitas.Name = "btnCitas";
-            this.btnCitas.Size = new System.Drawing.Size(150, 58);
-            this.btnCitas.TabIndex = 3;
-            this.btnCitas.Text = "Gestionar Citas";
-            this.btnCitas.UseVisualStyleBackColor = false;
-            this.btnCitas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCitas.Click += new System.EventHandler(this.btnCitas_Click);
-
+            // 
+            btnCitas.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCitas.BackColor = Color.DarkSlateGray;
+            btnCitas.Cursor = Cursors.Hand;
+            btnCitas.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnCitas.FlatAppearance.BorderSize = 0;
+            btnCitas.FlatStyle = FlatStyle.Flat;
+            btnCitas.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnCitas.ForeColor = Color.White;
+            btnCitas.Location = new Point(829, 230);
+            btnCitas.Margin = new Padding(4, 3, 4, 3);
+            btnCitas.Name = "btnCitas";
+            btnCitas.Size = new Size(175, 67);
+            btnCitas.TabIndex = 3;
+            btnCitas.Text = "Gestionar Citas";
+            btnCitas.UseVisualStyleBackColor = false;
+            btnCitas.Click += btnCitas_Click;
+            // 
             // btnUsuarios
-            this.btnUsuarios.BackColor = System.Drawing.Color.White;
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(155, 89, 182);
-            this.btnUsuarios.FlatAppearance.BorderSize = 2;
-            this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnUsuarios.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnUsuarios.Location = new System.Drawing.Point(100, 248);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(150, 58);
-            this.btnUsuarios.TabIndex = 4;
-            this.btnUsuarios.Text = "Administrar Usuarios";
-            this.btnUsuarios.UseVisualStyleBackColor = false;
-            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
-
+            // 
+            btnUsuarios.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUsuarios.BackColor = Color.DarkSlateGray;
+            btnUsuarios.Cursor = Cursors.Hand;
+            btnUsuarios.FlatAppearance.BorderColor = Color.FromArgb(155, 89, 182);
+            btnUsuarios.FlatAppearance.BorderSize = 0;
+            btnUsuarios.FlatStyle = FlatStyle.Flat;
+            btnUsuarios.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnUsuarios.ForeColor = Color.White;
+            btnUsuarios.Location = new Point(351, 328);
+            btnUsuarios.Margin = new Padding(4, 3, 4, 3);
+            btnUsuarios.Name = "btnUsuarios";
+            btnUsuarios.Size = new Size(175, 67);
+            btnUsuarios.TabIndex = 4;
+            btnUsuarios.Text = "Administrar Usuarios";
+            btnUsuarios.UseVisualStyleBackColor = false;
+            btnUsuarios.Click += btnUsuarios_Click;
+            // 
             // btnEspecialidades
-            this.btnEspecialidades.BackColor = System.Drawing.Color.White;
-            this.btnEspecialidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEspecialidades.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(46, 204, 113);
-            this.btnEspecialidades.FlatAppearance.BorderSize = 2;
-            this.btnEspecialidades.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnEspecialidades.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnEspecialidades.Location = new System.Drawing.Point(305, 248);
-            this.btnEspecialidades.Name = "btnEspecialidades";
-            this.btnEspecialidades.Size = new System.Drawing.Size(150, 58);
-            this.btnEspecialidades.TabIndex = 5;
-            this.btnEspecialidades.Text = "Especialidades";
-            this.btnEspecialidades.UseVisualStyleBackColor = false;
-            this.btnEspecialidades.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEspecialidades.Click += new System.EventHandler(this.btnEspecialidades_Click);
-
+            // 
+            btnEspecialidades.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEspecialidades.BackColor = Color.DarkSlateGray;
+            btnEspecialidades.Cursor = Cursors.Hand;
+            btnEspecialidades.FlatAppearance.BorderColor = Color.FromArgb(46, 204, 113);
+            btnEspecialidades.FlatAppearance.BorderSize = 0;
+            btnEspecialidades.FlatStyle = FlatStyle.Flat;
+            btnEspecialidades.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnEspecialidades.ForeColor = Color.White;
+            btnEspecialidades.Location = new Point(590, 328);
+            btnEspecialidades.Margin = new Padding(4, 3, 4, 3);
+            btnEspecialidades.Name = "btnEspecialidades";
+            btnEspecialidades.Size = new Size(175, 67);
+            btnEspecialidades.TabIndex = 5;
+            btnEspecialidades.Text = "Especialidades";
+            btnEspecialidades.UseVisualStyleBackColor = false;
+            btnEspecialidades.Click += btnEspecialidades_Click;
+            // 
             // btnEPS
-            this.btnEPS.BackColor = System.Drawing.Color.White;
-            this.btnEPS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEPS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            this.btnEPS.FlatAppearance.BorderSize = 2;
-            this.btnEPS.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnEPS.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.btnEPS.Location = new System.Drawing.Point(510, 248);
-            this.btnEPS.Name = "btnEPS";
-            this.btnEPS.Size = new System.Drawing.Size(150, 58);
-            this.btnEPS.TabIndex = 6;
-            this.btnEPS.Text = "Gestionar EPS";
-            this.btnEPS.UseVisualStyleBackColor = false;
-            this.btnEPS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEPS.Click += new System.EventHandler(this.btnEPS_Click);
-
+            // 
+            btnEPS.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEPS.BackColor = Color.DarkSlateGray;
+            btnEPS.Cursor = Cursors.Hand;
+            btnEPS.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnEPS.FlatAppearance.BorderSize = 0;
+            btnEPS.FlatStyle = FlatStyle.Flat;
+            btnEPS.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnEPS.ForeColor = Color.White;
+            btnEPS.Location = new Point(829, 328);
+            btnEPS.Margin = new Padding(4, 3, 4, 3);
+            btnEPS.Name = "btnEPS";
+            btnEPS.Size = new Size(175, 67);
+            btnEPS.TabIndex = 6;
+            btnEPS.Text = "Gestionar EPS";
+            btnEPS.UseVisualStyleBackColor = false;
+            btnEPS.Click += btnEPS_Click;
+            // 
             // pnlFooter
-            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(236, 240, 241);
-            this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFooter.Controls.Add(this.lblUsuario);
-            this.pnlFooter.Controls.Add(this.btnCerrarSesion);
-            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 460);
-            this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(800, 60);
-            this.pnlFooter.TabIndex = 1;
-
+            // 
+            pnlFooter.BackColor = Color.FromArgb(236, 240, 241);
+            pnlFooter.BorderStyle = BorderStyle.FixedSingle;
+            pnlFooter.Controls.Add(lblUsuario);
+            pnlFooter.Controls.Add(btnCerrarSesion);
+            pnlFooter.Dock = DockStyle.Bottom;
+            pnlFooter.Location = new Point(0, 531);
+            pnlFooter.Margin = new Padding(4, 3, 4, 3);
+            pnlFooter.Name = "pnlFooter";
+            pnlFooter.Size = new Size(1026, 69);
+            pnlFooter.TabIndex = 1;
+            // 
             // lblUsuario
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80);
-            this.lblUsuario.Location = new System.Drawing.Point(20, 20);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(50, 15);
-            this.lblUsuario.TabIndex = 0;
-            this.lblUsuario.Text = "Usuario:";
-
+            // 
+            lblUsuario.AutoSize = true;
+            lblUsuario.Font = new Font("Segoe UI", 9F);
+            lblUsuario.ForeColor = Color.Black;
+            lblUsuario.Location = new Point(23, 23);
+            lblUsuario.Margin = new Padding(4, 0, 4, 0);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(50, 15);
+            lblUsuario.TabIndex = 0;
+            lblUsuario.Text = "Usuario:";
+            // 
             // btnCerrarSesion
-            this.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(640, 12);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(135, 35);
-            this.btnCerrarSesion.TabIndex = 1;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = false;
-            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-
+            // 
+            btnCerrarSesion.BackColor = Color.FromArgb(231, 76, 60);
+            btnCerrarSesion.Cursor = Cursors.Hand;
+            btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
+            btnCerrarSesion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCerrarSesion.ForeColor = Color.White;
+            btnCerrarSesion.Location = new Point(1114, 10);
+            btnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(158, 40);
+            btnCerrarSesion.TabIndex = 1;
+            btnCerrarSesion.Text = "Cerrar Sesión";
+            btnCerrarSesion.UseVisualStyleBackColor = false;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
             // MainForm
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 520);
-            this.Controls.Add(this.pnlFooter);
-            this.Controls.Add(this.pnlMenu);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CLINICA SAN MANOTAS - Panel Administrativo";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.pnlMenu.ResumeLayout(false);
-            this.pnlMenu.PerformLayout();
-            this.pnlFooter.ResumeLayout(false);
-            this.pnlFooter.PerformLayout();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            BackgroundImage = CLINICA_SAN_MANOTAS.Properties.Resources.fondo_de_pasillo_vacio;
+            ClientSize = new Size(1026, 600);
+            Controls.Add(pnlFooter);
+            Controls.Add(pnlMenu);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "MainForm";
+            SizeGripStyle = SizeGripStyle.Show;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "CLINICA SAN MANOTAS - Panel Administrativo";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
+            pnlMenu.ResumeLayout(false);
+            pnlFooter.ResumeLayout(false);
+            pnlFooter.PerformLayout();
+            ResumeLayout(false);
         }
 
         private System.Windows.Forms.Panel pnlMenu;

@@ -15,6 +15,8 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lblTitulo = new Label();
             dgvPacientes = new DataGridView();
             pnlFiltro = new Panel();
@@ -73,37 +75,42 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = false;
-            lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitulo.Location = new Point(12, 12);
+            lblTitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.Black;
+            lblTitulo.Location = new Point(8, 0);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(400, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Gestión de Pacientes";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitulo.Click += lblTitulo_Click;
             // 
             // dgvPacientes
             // 
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(245, 248, 250);
+            dgvPacientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvPacientes.BackgroundColor = Color.White;
-            dgvPacientes.BorderStyle = BorderStyle.FixedSingle;
-            dgvPacientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 152, 219);
-            dgvPacientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvPacientes.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvPacientes.ColumnHeadersHeight = 35;
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvPacientes.EnableHeadersVisualStyles = false;
-            dgvPacientes.Location = new Point(12, 46);
+            dgvPacientes.Location = new Point(12, 39);
             dgvPacientes.Margin = new Padding(4, 3, 4, 3);
             dgvPacientes.Name = "dgvPacientes";
-            dgvPacientes.Size = new Size(1027, 199);
+            dgvPacientes.Size = new Size(1027, 200);
             dgvPacientes.TabIndex = 1;
-            dgvPacientes.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 248, 250);
             // 
             // pnlFiltro
             // 
-            pnlFiltro.BackColor = Color.FromArgb(236, 240, 241);
+            pnlFiltro.BackColor = Color.AliceBlue;
             pnlFiltro.BorderStyle = BorderStyle.FixedSingle;
             pnlFiltro.Controls.Add(lblBuscar);
             pnlFiltro.Controls.Add(txtBuscar);
@@ -120,10 +127,10 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             pnlFiltro.Controls.Add(dtpFiltroFechaReg);
             pnlFiltro.Controls.Add(btnAplicarFiltrosPac);
             pnlFiltro.Controls.Add(btnLimpiarFiltrosPac);
-            pnlFiltro.Location = new Point(12, 241);
+            pnlFiltro.Location = new Point(12, 236);
             pnlFiltro.Margin = new Padding(4, 3, 4, 3);
             pnlFiltro.Name = "pnlFiltro";
-            pnlFiltro.Size = new Size(1026, 69);
+            pnlFiltro.Size = new Size(1026, 89);
             pnlFiltro.TabIndex = 2;
             // 
             // lblBuscar
@@ -146,19 +153,21 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(216, 9);
+            btnBuscar.BackColor = Color.SteelBlue;
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.Location = new Point(216, 6);
             btnBuscar.Margin = new Padding(4, 3, 4, 3);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(70, 27);
             btnBuscar.TabIndex = 2;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // lblFiltroGenero
             // 
             lblFiltroGenero.AutoSize = true;
-            lblFiltroGenero.Location = new Point(292, 12);
+            lblFiltroGenero.Location = new Point(323, 12);
             lblFiltroGenero.Margin = new Padding(4, 0, 4, 0);
             lblFiltroGenero.Name = "lblFiltroGenero";
             lblFiltroGenero.Size = new Size(48, 15);
@@ -167,7 +176,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // cmbFiltroGenero
             // 
-            cmbFiltroGenero.Location = new Point(350, 9);
+            cmbFiltroGenero.Location = new Point(389, 9);
             cmbFiltroGenero.Margin = new Padding(4, 3, 4, 3);
             cmbFiltroGenero.Name = "cmbFiltroGenero";
             cmbFiltroGenero.Size = new Size(93, 23);
@@ -176,7 +185,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblFiltroEdadMin
             // 
             lblFiltroEdadMin.AutoSize = true;
-            lblFiltroEdadMin.Location = new Point(449, 12);
+            lblFiltroEdadMin.Location = new Point(503, 12);
             lblFiltroEdadMin.Margin = new Padding(4, 0, 4, 0);
             lblFiltroEdadMin.Name = "lblFiltroEdadMin";
             lblFiltroEdadMin.Size = new Size(60, 15);
@@ -185,7 +194,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // nudFiltroEdadMin
             // 
-            nudFiltroEdadMin.Location = new Point(519, 9);
+            nudFiltroEdadMin.Location = new Point(571, 9);
             nudFiltroEdadMin.Margin = new Padding(4, 3, 4, 3);
             nudFiltroEdadMin.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudFiltroEdadMin.Name = "nudFiltroEdadMin";
@@ -195,7 +204,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblFiltroEdadMax
             // 
             lblFiltroEdadMax.AutoSize = true;
-            lblFiltroEdadMax.Location = new Point(581, 12);
+            lblFiltroEdadMax.Location = new Point(645, 11);
             lblFiltroEdadMax.Margin = new Padding(4, 0, 4, 0);
             lblFiltroEdadMax.Name = "lblFiltroEdadMax";
             lblFiltroEdadMax.Size = new Size(61, 15);
@@ -204,7 +213,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // nudFiltroEdadMax
             // 
-            nudFiltroEdadMax.Location = new Point(651, 9);
+            nudFiltroEdadMax.Location = new Point(716, 8);
             nudFiltroEdadMax.Margin = new Padding(4, 3, 4, 3);
             nudFiltroEdadMax.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
             nudFiltroEdadMax.Name = "nudFiltroEdadMax";
@@ -215,7 +224,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblFiltroEPS
             // 
             lblFiltroEPS.AutoSize = true;
-            lblFiltroEPS.Location = new Point(712, 12);
+            lblFiltroEPS.Location = new Point(794, 12);
             lblFiltroEPS.Margin = new Padding(4, 0, 4, 0);
             lblFiltroEPS.Name = "lblFiltroEPS";
             lblFiltroEPS.Size = new Size(29, 15);
@@ -224,7 +233,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // cmbFiltroEPS
             // 
-            cmbFiltroEPS.Location = new Point(756, 9);
+            cmbFiltroEPS.Location = new Point(838, 9);
             cmbFiltroEPS.Margin = new Padding(4, 3, 4, 3);
             cmbFiltroEPS.Name = "cmbFiltroEPS";
             cmbFiltroEPS.Size = new Size(93, 23);
@@ -233,7 +242,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblFiltroFechaReg
             // 
             lblFiltroFechaReg.AutoSize = true;
-            lblFiltroFechaReg.Location = new Point(12, 29);
+            lblFiltroFechaReg.Location = new Point(12, 47);
             lblFiltroFechaReg.Margin = new Padding(4, 0, 4, 0);
             lblFiltroFechaReg.Name = "lblFiltroFechaReg";
             lblFiltroFechaReg.Size = new Size(42, 15);
@@ -243,7 +252,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // dtpFiltroFechaReg
             // 
             dtpFiltroFechaReg.Format = DateTimePickerFormat.Short;
-            dtpFiltroFechaReg.Location = new Point(70, 29);
+            dtpFiltroFechaReg.Location = new Point(70, 45);
             dtpFiltroFechaReg.Margin = new Padding(4, 3, 4, 3);
             dtpFiltroFechaReg.Name = "dtpFiltroFechaReg";
             dtpFiltroFechaReg.Size = new Size(139, 23);
@@ -251,28 +260,33 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // btnAplicarFiltrosPac
             // 
-            btnAplicarFiltrosPac.Location = new Point(216, 34);
+            btnAplicarFiltrosPac.BackColor = Color.Green;
+            btnAplicarFiltrosPac.ForeColor = Color.White;
+            btnAplicarFiltrosPac.Location = new Point(217, 42);
             btnAplicarFiltrosPac.Margin = new Padding(4, 3, 4, 3);
             btnAplicarFiltrosPac.Name = "btnAplicarFiltrosPac";
-            btnAplicarFiltrosPac.Size = new Size(88, 27);
+            btnAplicarFiltrosPac.Size = new Size(92, 26);
             btnAplicarFiltrosPac.TabIndex = 13;
             btnAplicarFiltrosPac.Text = "🔍 Filtrar";
-            btnAplicarFiltrosPac.UseVisualStyleBackColor = true;
+            btnAplicarFiltrosPac.UseVisualStyleBackColor = false;
             btnAplicarFiltrosPac.Click += BtnAplicarFiltrosPac_Click;
             // 
             // btnLimpiarFiltrosPac
             // 
-            btnLimpiarFiltrosPac.Location = new Point(308, 33);
+            btnLimpiarFiltrosPac.BackColor = Color.Gray;
+            btnLimpiarFiltrosPac.ForeColor = Color.White;
+            btnLimpiarFiltrosPac.Location = new Point(323, 42);
             btnLimpiarFiltrosPac.Margin = new Padding(4, 3, 4, 3);
             btnLimpiarFiltrosPac.Name = "btnLimpiarFiltrosPac";
-            btnLimpiarFiltrosPac.Size = new Size(88, 27);
+            btnLimpiarFiltrosPac.Size = new Size(78, 26);
             btnLimpiarFiltrosPac.TabIndex = 14;
             btnLimpiarFiltrosPac.Text = "⟲ Limpiar";
-            btnLimpiarFiltrosPac.UseVisualStyleBackColor = true;
+            btnLimpiarFiltrosPac.UseVisualStyleBackColor = false;
             btnLimpiarFiltrosPac.Click += BtnLimpiarFiltrosPac_Click;
             // 
             // pnlFormulario
             // 
+            pnlFormulario.BackColor = Color.AliceBlue;
             pnlFormulario.BorderStyle = BorderStyle.FixedSingle;
             pnlFormulario.Controls.Add(lblNombres);
             pnlFormulario.Controls.Add(txtNombres);
@@ -294,11 +308,12 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             pnlFormulario.Controls.Add(cmbGenero);
             pnlFormulario.Controls.Add(lblFechaNacimiento);
             pnlFormulario.Controls.Add(dtpFechaNacimiento);
-            pnlFormulario.Location = new Point(12, 312);
+            pnlFormulario.Location = new Point(12, 331);
             pnlFormulario.Margin = new Padding(4, 3, 4, 3);
             pnlFormulario.Name = "pnlFormulario";
             pnlFormulario.Size = new Size(1026, 161);
             pnlFormulario.TabIndex = 3;
+            pnlFormulario.Paint += pnlFormulario_Paint;
             // 
             // lblNombres
             // 
@@ -313,7 +328,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtNombres
             // 
             txtNombres.Enabled = false;
-            txtNombres.Location = new Point(82, 12);
+            txtNombres.Location = new Point(102, 9);
             txtNombres.Margin = new Padding(4, 3, 4, 3);
             txtNombres.Name = "txtNombres";
             txtNombres.Size = new Size(174, 23);
@@ -332,7 +347,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtApellidos
             // 
             txtApellidos.Enabled = false;
-            txtApellidos.Location = new Point(362, 12);
+            txtApellidos.Location = new Point(380, 12);
             txtApellidos.Margin = new Padding(4, 3, 4, 3);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.Size = new Size(174, 23);
@@ -351,7 +366,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtEmail
             // 
             txtEmail.Enabled = false;
-            txtEmail.Location = new Point(82, 46);
+            txtEmail.Location = new Point(102, 43);
             txtEmail.Margin = new Padding(4, 3, 4, 3);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(174, 23);
@@ -370,7 +385,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtTelefono
             // 
             txtTelefono.Enabled = false;
-            txtTelefono.Location = new Point(362, 46);
+            txtTelefono.Location = new Point(380, 46);
             txtTelefono.Margin = new Padding(4, 3, 4, 3);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(174, 23);
@@ -389,7 +404,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtDocumento
             // 
             txtDocumento.Enabled = false;
-            txtDocumento.Location = new Point(82, 81);
+            txtDocumento.Location = new Point(102, 78);
             txtDocumento.Margin = new Padding(4, 3, 4, 3);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(174, 23);
@@ -408,7 +423,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtDireccion
             // 
             txtDireccion.Enabled = false;
-            txtDireccion.Location = new Point(362, 81);
+            txtDireccion.Location = new Point(380, 81);
             txtDireccion.Margin = new Padding(4, 3, 4, 3);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(174, 23);
@@ -427,7 +442,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // txtCiudad
             // 
             txtCiudad.Enabled = false;
-            txtCiudad.Location = new Point(82, 115);
+            txtCiudad.Location = new Point(102, 112);
             txtCiudad.Margin = new Padding(4, 3, 4, 3);
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(174, 23);
@@ -446,7 +461,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // cmbEPS
             // 
             cmbEPS.Enabled = false;
-            cmbEPS.Location = new Point(362, 115);
+            cmbEPS.Location = new Point(380, 115);
             cmbEPS.Margin = new Padding(4, 3, 4, 3);
             cmbEPS.Name = "cmbEPS";
             cmbEPS.Size = new Size(174, 23);
@@ -455,7 +470,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblGenero
             // 
             lblGenero.AutoSize = true;
-            lblGenero.Location = new Point(583, 12);
+            lblGenero.Location = new Point(658, 16);
             lblGenero.Margin = new Padding(4, 0, 4, 0);
             lblGenero.Name = "lblGenero";
             lblGenero.Size = new Size(48, 15);
@@ -466,7 +481,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             cmbGenero.Enabled = false;
             cmbGenero.Items.AddRange(new object[] { "M", "F", "O" });
-            cmbGenero.Location = new Point(653, 12);
+            cmbGenero.Location = new Point(736, 12);
             cmbGenero.Margin = new Padding(4, 3, 4, 3);
             cmbGenero.Name = "cmbGenero";
             cmbGenero.Size = new Size(116, 23);
@@ -475,7 +490,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // lblFechaNacimiento
             // 
             lblFechaNacimiento.AutoSize = true;
-            lblFechaNacimiento.Location = new Point(544, 52);
+            lblFechaNacimiento.Location = new Point(601, 58);
             lblFechaNacimiento.Margin = new Padding(4, 0, 4, 0);
             lblFechaNacimiento.Name = "lblFechaNacimiento";
             lblFechaNacimiento.Size = new Size(106, 15);
@@ -485,20 +500,21 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // dtpFechaNacimiento
             // 
             dtpFechaNacimiento.Enabled = false;
-            dtpFechaNacimiento.Location = new Point(653, 46);
+            dtpFechaNacimiento.Location = new Point(738, 53);
             dtpFechaNacimiento.Margin = new Padding(4, 3, 4, 3);
             dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new Size(116, 23);
+            dtpFechaNacimiento.Size = new Size(220, 23);
             dtpFechaNacimiento.TabIndex = 19;
             // 
             // pnlBotones
             // 
+            pnlBotones.BackColor = Color.AliceBlue;
             pnlBotones.Controls.Add(btnNuevo);
             pnlBotones.Controls.Add(btnGuardar);
             pnlBotones.Controls.Add(btnEditar);
             pnlBotones.Controls.Add(btnEliminar);
             pnlBotones.Controls.Add(btnCancelar);
-            pnlBotones.Location = new Point(12, 531);
+            pnlBotones.Location = new Point(12, 543);
             pnlBotones.Margin = new Padding(4, 3, 4, 3);
             pnlBotones.Name = "pnlBotones";
             pnlBotones.Size = new Size(1027, 46);
@@ -563,8 +579,9 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             // 
             // pnlPaginacion
             // 
+            pnlPaginacion.BackColor = Color.AliceBlue;
             pnlPaginacion.Controls.Add(lblPagina);
-            pnlPaginacion.Location = new Point(12, 485);
+            pnlPaginacion.Location = new Point(12, 500);
             pnlPaginacion.Margin = new Padding(4, 3, 4, 3);
             pnlPaginacion.Name = "pnlPaginacion";
             pnlPaginacion.Size = new Size(1027, 35);
@@ -607,7 +624,6 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             pnlPaginacion.ResumeLayout(false);
             pnlPaginacion.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         private System.Windows.Forms.Label lblTitulo;

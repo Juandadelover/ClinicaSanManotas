@@ -19,7 +19,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             this.Text = "CLINICA SAN MANOTAS - Panel Administrativo";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.WindowState = FormWindowState.Maximized;
-            
+
             ActualizarEtiquetaUsuario();
             LogHelper.Info($"Panel administrativo abierto para usuario: {SessionManager.UsuarioActual?.Username}");
         }
@@ -146,6 +146,16 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     SessionManager.CerrarSesion();
                 }
             }
+        }
+
+        private void pnlMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

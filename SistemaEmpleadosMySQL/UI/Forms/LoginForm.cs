@@ -26,7 +26,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+
             txtUsuario.Focus();
             LogHelper.Info("Formulario de login cargado");
         }
@@ -43,19 +43,19 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     if (_unitOfWork.Usuarios.VerificarCredenciales(usuario, contraseña))
                     {
                         var usuarioActual = _unitOfWork.Usuarios.GetByUsername(usuario);
-                        
+
                         if (usuarioActual != null && usuarioActual.Estado == "Activo")
                         {
                             // Actualizar último login
                             _unitOfWork.Usuarios.ActualizarUltimoLogin(usuarioActual.UserId);
-                            
+
                             // Log de acceso exitoso
                             LogHelper.LogAcceso(usuarioActual.UserId, usuario, "LOGIN", true);
-                            
+
                             // Guardar datos en sesión
                             SessionManager.UsuarioActual = usuarioActual;
                             SessionManager.FechaLogin = DateTime.Now;
-                            
+
                             MessageBox.Show(
                                 $"¡Bienvenido {usuarioActual.ObtenerNombreRol()}!",
                                 "Acceso Permitido",
@@ -84,7 +84,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                             "Error de Autenticación",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-                        
+
                         txtContraseña.Clear();
                         txtUsuario.Focus();
                     }
@@ -169,6 +169,16 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 btnIngresar_Click(this, EventArgs.Empty);
                 e.Handled = true;
             }
+        }
+
+        private void lblSubtitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

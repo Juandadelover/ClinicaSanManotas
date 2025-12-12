@@ -250,5 +250,10 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
             return true;
         }
+
+        private void pnlFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

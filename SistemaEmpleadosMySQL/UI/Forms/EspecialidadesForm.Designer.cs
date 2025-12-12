@@ -22,57 +22,76 @@ namespace SistemaEmpleadosMySQL.UI.Forms
 
         private void InitializeComponent()
         {
-            this.dgvEspecialidades = new System.Windows.Forms.DataGridView();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEspecialidades)).BeginInit();
-            this.SuspendLayout();
-
-            this.dgvEspecialidades.Name = "dgvEspecialidades";
-            this.dgvEspecialidades.Location = new System.Drawing.Point(12, 12);
-            this.dgvEspecialidades.Size = new System.Drawing.Size(760, 300);
-
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Location = new System.Drawing.Point(12, 320);
-            this.txtNombre.Size = new System.Drawing.Size(200, 23);
-
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Location = new System.Drawing.Point(220, 320);
-            this.txtDescripcion.Size = new System.Drawing.Size(552, 23);
-
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.Location = new System.Drawing.Point(12, 351);
-            this.btnAgregar.Size = new System.Drawing.Size(100, 30);
-
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.Location = new System.Drawing.Point(120, 351);
-            this.btnActualizar.Size = new System.Drawing.Size(100, 30);
-
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Location = new System.Drawing.Point(228, 351);
-            this.btnEliminar.Size = new System.Drawing.Size(100, 30);
-
-            this.Controls.Add(this.dgvEspecialidades);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnEliminar);
-
-            this.Name = "EspecialidadesForm";
-            this.Text = "Gestión de Especialidades";
-            this.Size = new System.Drawing.Size(800, 400);
-            this.Load += EspecialidadesForm_Load;
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEspecialidades)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            dgvEspecialidades = new DataGridView();
+            txtNombre = new TextBox();
+            txtDescripcion = new TextBox();
+            btnAgregar = new Button();
+            btnActualizar = new Button();
+            btnEliminar = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvEspecialidades).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvEspecialidades
+            // 
+            dgvEspecialidades.BackgroundColor = Color.AliceBlue;
+            dgvEspecialidades.Location = new Point(12, 12);
+            dgvEspecialidades.Name = "dgvEspecialidades";
+            dgvEspecialidades.Size = new Size(760, 300);
+            dgvEspecialidades.TabIndex = 0;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(12, 320);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(200, 23);
+            txtNombre.TabIndex = 1;
+            // 
+            // txtDescripcion
+            // 
+            txtDescripcion.Location = new Point(220, 320);
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(552, 23);
+            txtDescripcion.TabIndex = 2;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(12, 351);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(100, 30);
+            btnAgregar.TabIndex = 3;
+            btnAgregar.Text = "Agregar";
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(120, 351);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(100, 30);
+            btnActualizar.TabIndex = 4;
+            btnActualizar.Text = "Actualizar";
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(228, 351);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(100, 30);
+            btnEliminar.TabIndex = 5;
+            btnEliminar.Text = "Eliminar";
+            // 
+            // EspecialidadesForm
+            // 
+            ClientSize = new Size(784, 409);
+            Controls.Add(dgvEspecialidades);
+            Controls.Add(txtNombre);
+            Controls.Add(txtDescripcion);
+            Controls.Add(btnAgregar);
+            Controls.Add(btnActualizar);
+            Controls.Add(btnEliminar);
+            Name = "EspecialidadesForm";
+            Text = "Gestión de Especialidades";
+            Load += EspecialidadesForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvEspecialidades).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

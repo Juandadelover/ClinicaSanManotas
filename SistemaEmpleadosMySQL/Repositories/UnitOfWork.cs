@@ -1003,8 +1003,89 @@ namespace SistemaEmpleadosMySQL.Repositories
             {
                 EspecialidadId = reader.GetInt32("EspecialidadId"),
                 Nombre = reader.GetString("Nombre"),
-                Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString("Descripcion")
+                Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString("Descripcion"),
+                Estado = "Activo",
+                FechaCreacion = DateTime.Now
             };
+        }
+
+        public override void Add(Especialidad entity)
+        {
+            try
+            {
+                if (!entity.EsValida())
+                {
+                    LogHelper.Warning("Especialidad inválida para agregar");
+                    throw new Exception("Datos de la especialidad inválidos");
+                }
+
+                string query = @"INSERT INTO Especialidad 
+                               (Nombre, Descripcion)
+                               VALUES 
+                               (@nombre, @descripcion)";
+
+                var parameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@nombre", entity.Nombre),
+                    new MySqlParameter("@descripcion", entity.Descripcion ?? "")
+                };
+
+                _db.ExecuteNonQuery(query, parameters);
+                LogHelper.Info($"Especialidad agregada: {entity.Nombre}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Error al agregar Especialidad", ex);
+                throw;
+            }
+        }
+
+        public override void Update(Especialidad entity)
+        {
+            try
+            {
+                if (!entity.EsValida())
+                {
+                    LogHelper.Warning("Especialidad inválida para actualizar");
+                    throw new Exception("Datos de la especialidad inválidos");
+                }
+
+                string query = @"UPDATE Especialidad SET 
+                               Nombre = @nombre,
+                               Descripcion = @descripcion
+                               WHERE EspecialidadId = @id";
+
+                var parameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@nombre", entity.Nombre),
+                    new MySqlParameter("@descripcion", entity.Descripcion ?? ""),
+                    new MySqlParameter("@id", entity.EspecialidadId)
+                };
+
+                _db.ExecuteNonQuery(query, parameters);
+                LogHelper.Info($"Especialidad actualizada: {entity.Nombre}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Error al actualizar Especialidad", ex);
+                throw;
+            }
+        }
+
+        public override void Remove(Especialidad entity)
+        {
+            try
+            {
+                string query = "DELETE FROM Especialidad WHERE EspecialidadId = @id";
+                var param = new MySqlParameter("@id", entity.EspecialidadId);
+                _db.ExecuteNonQuery(query, param);
+                LogHelper.Info($"Especialidad eliminada: {entity.Nombre}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Error al eliminar Especialidad", ex);
+                throw;
+            }
         }
     }
 

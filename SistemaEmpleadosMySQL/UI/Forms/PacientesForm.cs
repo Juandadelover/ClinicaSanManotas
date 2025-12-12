@@ -128,7 +128,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 cmbEPS.Items.Add("-- Seleccionar --");
 
                 var listaEPS = _unitOfWork.EPS.GetAll();
-                
+
                 if (listaEPS != null && listaEPS.Any())
                 {
                     foreach (var eps in listaEPS)
@@ -141,7 +141,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 {
                     LogHelper.Warning("No se cargaron EPS desde GetAll()");
                 }
-                
+
                 cmbEPS.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -167,7 +167,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 cmbFiltroEPS.Items.Clear();
                 cmbFiltroEPS.Items.Add("Todos");
                 var listaEPS = _unitOfWork.EPS.GetAll();
-                
+
                 if (listaEPS != null && listaEPS.Any())
                 {
                     foreach (var eps in listaEPS)
@@ -184,7 +184,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 // Configurar NumericUpDown
                 nudFiltroEdadMin.Value = 0;
                 nudFiltroEdadMax.Value = 120;
-                
+
                 // Configurar DateTimePicker
                 dtpFiltroFechaReg.Value = DateTime.Now.AddYears(-1);
             }
@@ -204,7 +204,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 if (pacientes != null && pacientes.Any())
                 {
                     dgvPacientes.DataSource = pacientes.ToList();
-                    
+
                     // Ajustar propiedades de columnas
                     if (dgvPacientes.Columns.Count > 0)
                     {
@@ -218,7 +218,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                         dgvPacientes.Columns["Documento"].Width = 100;
                         dgvPacientes.Columns["EPSId"].Width = 70;
                         dgvPacientes.Columns["Direccion"].Width = 120;
-                        
+
                         // Ocultar columnas innecesarias
                         if (dgvPacientes.Columns.Contains("Ciudad"))
                             dgvPacientes.Columns["Ciudad"].Visible = false;
@@ -373,7 +373,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                     txtCiudad.Text = _pacienteActual.Ciudad;
                     dtpFechaNacimiento.Value = _pacienteActual.FechaNacimiento;
                     cmbGenero.SelectedItem = _pacienteActual.Genero;
-                    
+
                     // Seleccionar EPS por ID
                     for (int i = 0; i < cmbEPS.Items.Count; i++)
                     {
@@ -404,7 +404,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             }
 
             var pacientesSeleccionados = dgvPacientes.SelectedRows[0];
-            string nombrePaciente = pacientesSeleccionados.Cells["Nombres"].Value?.ToString() + " " + 
+            string nombrePaciente = pacientesSeleccionados.Cells["Nombres"].Value?.ToString() + " " +
                                    pacientesSeleccionados.Cells["Apellidos"].Value?.ToString();
 
             DialogResult resultado = ConfirmarAccion(
@@ -416,7 +416,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 {
                     int pacienteId = (int)dgvPacientes.SelectedRows[0].Cells["PacienteId"].Value;
                     var paciente = _unitOfWork.Pacientes.GetById(pacienteId);
-                    
+
                     if (paciente != null)
                     {
                         _unitOfWork.Pacientes.Remove(paciente);
@@ -521,7 +521,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
             try
             {
                 _paginaActual = 1;
-                
+
                 string generoFiltro = cmbFiltroGenero.SelectedItem?.ToString() ?? "";
                 int edadMin = (int)nudFiltroEdadMin.Value;
                 int edadMax = (int)nudFiltroEdadMax.Value;
@@ -546,7 +546,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 {
                     var epsList = _unitOfWork.EPS.GetAll();
                     var epsObj = epsList?.FirstOrDefault(e => e.Nombre == eps);
-                    
+
                     if (epsObj != null)
                     {
                         var byEPS = _unitOfWork.Pacientes.BuscarPorEPS(epsObj.EPSId, _paginaActual, 1000);
@@ -581,7 +581,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 }).ToList();
 
                 dgvPacientes.DataSource = filtered.Count > 0 ? filtered : null;
-                
+
                 if (filtered.Count == 0)
                 {
                     MostrarMensajeAdverlencia("No se encontraron pacientes con los filtros especificados.\n\nIntenta ajustar los criterios de búsqueda.");
@@ -590,7 +590,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 {
                     MostrarMensajeExito($"Se encontraron {filtered.Count} paciente(s).");
                 }
-                
+
                 LogHelper.Info($"Filtros aplicados - Género: {generoFiltro}, Edad: {edadMin}-{edadMax}, EPS: {eps}, Resultados: {filtered.Count}");
             }
             catch (Exception ex)
@@ -612,7 +612,7 @@ namespace SistemaEmpleadosMySQL.UI.Forms
                 nudFiltroEdadMax.Value = 120;
                 cmbFiltroEPS.SelectedIndex = 0;
                 dtpFiltroFechaReg.Value = DateTime.Now.AddYears(-1);
-                
+
                 CargarPacientes();
                 LogHelper.Info("Filtros de Pacientes limpiados");
             }
@@ -645,6 +645,16 @@ namespace SistemaEmpleadosMySQL.UI.Forms
         private DialogResult ConfirmarAccion(string mensaje)
         {
             return MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlFormulario_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
