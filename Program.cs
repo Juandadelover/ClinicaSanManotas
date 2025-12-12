@@ -1,4 +1,4 @@
-using SistemaEmpleadosMySQL.UI.Forms;
+using ClinicaSanManotas.UI.Forms;
 using System.Windows.Forms;
 
 namespace CLINICA_SAN_MANOTAS
